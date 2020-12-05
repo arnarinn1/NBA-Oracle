@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NbaOracle\NbaOracle.Providers.csproj" />
+    <ProjectReference Include="..\Shared\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NbaOracle.ValueObjects\ValueObjects.csproj" />
+    <ProjectReference Include="..\ValueObjects\ValueObjects.csproj" />
   </ItemGroup>
 
 </Project>

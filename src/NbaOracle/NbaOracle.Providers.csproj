@@ -5,8 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NbaOracle.BuildingBlocks\BuildingBlocks.csproj" />
-    <ProjectReference Include="..\NbaOracle.ValueObjects\ValueObjects.csproj" />
+    <PackageReference Include="AngleSharp" Version="0.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>
