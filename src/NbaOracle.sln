@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle", "NbaOracle\NbaOracle.csproj", "{3D27CA1A-B236-4C26-803D-EC1D1F726A41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle.Providers", "NbaOracle\NbaOracle.Providers.csproj", "{3D27CA1A-B236-4C26-803D-EC1D1F726A41}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NbaOracle.Tests", "NbaOracle.Tests\NbaOracle.Tests.csproj", "{07ACB722-1269-4C06-9FC5-0413F4E6808D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{5DE27C26-2FB5-4D5B-B380-955EBF896C27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D27CA1A-B236-4C26-803D-EC1D1F726A41} = {5DE27C26-2FB5-4D5B-B380-955EBF896C27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8BFF6C3-2B94-4AD6-8F3A-599F5849DD93}
