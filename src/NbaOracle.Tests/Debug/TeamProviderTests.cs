@@ -12,7 +12,7 @@ namespace NbaOracle.Tests.Debug
     public class TeamProviderTests
     {
         [Fact]
-        public async Task Doo()
+        public async Task Execute()
         {
             var url = "https://www.basketball-reference.com/teams/LAL/2020.html";
             var fileLocation = @"C:\Users\arnar.heimisson\Documents\Projects\Github\nba-data\html\seasons\2020";
