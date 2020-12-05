@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BuildingBlocks.DocumentLoaders;
-using NbaOracle.Providers.BasketballReference.Teams.Parsers;
+using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
 
 namespace NbaOracle.Providers.BasketballReference
 {
