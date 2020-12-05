@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using AngleSharp.Dom;
+﻿using AngleSharp.Dom;
 using BuildingBlocks.Parsers;
 
 namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
@@ -8,14 +7,9 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
     {
         public TeamRoosterData Parse(IDocument document)
         {
-            //todo do with selector thingy
-            var element = document.All.FirstOrDefault(x => x.LocalName == "div" && x.HasAttribute("id") && x.GetAttribute("id") == "all_roster");
-            if (element == null)
-                return null;
-
             var output = new TeamRoosterData();
 
-            foreach (var player in element.QuerySelectorAll("tbody tr"))
+            foreach (var player in document.QuerySelectorAll("div[id='all_roster'] tbody tr"))
             {
                 var playerNameElement = player.QuerySelector("td[data-stat='player']");
                 var playerNumberElement = player.QuerySelector("th[data-stat='number']");
