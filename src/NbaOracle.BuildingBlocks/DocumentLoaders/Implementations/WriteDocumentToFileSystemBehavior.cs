@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
-using NbaOracle.Providers.BuildingBlocks.FileSystem;
+using BuildingBlocks.FileSystem;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
+namespace BuildingBlocks.DocumentLoaders.Implementations
 {
     public class WriteDocumentToFileSystemBehavior : IDocumentLoader
     {
@@ -22,7 +22,7 @@ namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
 
             _fileSystem.CreateDirectory(options.DirectoryPath);
 
-            await _fileSystem.CreateFile(options.GetFilePath(), document.Source.Text);
+            await _fileSystem.CreateFile(options.GetFilePath(), new FileContent(options.Url, options.DirectoryPath, options.Identifier, document.Source.Text));
 
             return document;
         }

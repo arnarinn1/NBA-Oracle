@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle.Providers", "NbaOracle\NbaOracle.Providers.csproj", "{3D27CA1A-B236-4C26-803D-EC1D1F726A41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NbaOracle.Tests", "NbaOracle.Tests\NbaOracle.Tests.csproj", "{07ACB722-1269-4C06-9FC5-0413F4E6808D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle.Tests", "NbaOracle.Tests\NbaOracle.Tests.csproj", "{07ACB722-1269-4C06-9FC5-0413F4E6808D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{5DE27C26-2FB5-4D5B-B380-955EBF896C27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "NbaOracle.BuildingBlocks\BuildingBlocks.csproj", "{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObjects", "NbaOracle.ValueObjects\ValueObjects.csproj", "{80E217B1-0052-4794-9CCA-7A5A0F7417BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A4014678-8E64-4623-AC79-0CD7D54CA980}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,12 +27,21 @@ Global
 		{07ACB722-1269-4C06-9FC5-0413F4E6808D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07ACB722-1269-4C06-9FC5-0413F4E6808D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07ACB722-1269-4C06-9FC5-0413F4E6808D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E217B1-0052-4794-9CCA-7A5A0F7417BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E217B1-0052-4794-9CCA-7A5A0F7417BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E217B1-0052-4794-9CCA-7A5A0F7417BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E217B1-0052-4794-9CCA-7A5A0F7417BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3D27CA1A-B236-4C26-803D-EC1D1F726A41} = {5DE27C26-2FB5-4D5B-B380-955EBF896C27}
+		{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4} = {A4014678-8E64-4623-AC79-0CD7D54CA980}
+		{80E217B1-0052-4794-9CCA-7A5A0F7417BC} = {A4014678-8E64-4623-AC79-0CD7D54CA980}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D8BFF6C3-2B94-4AD6-8F3A-599F5849DD93}

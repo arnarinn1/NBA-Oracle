@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
+namespace BuildingBlocks.DocumentLoaders.Implementations
 {
     public class AngleSharpHttpDocumentLoader : IDocumentLoader
     {

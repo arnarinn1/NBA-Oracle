@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AngleSharp.Dom;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders
+namespace BuildingBlocks.DocumentLoaders
 {
     public interface IDocumentLoader
     {

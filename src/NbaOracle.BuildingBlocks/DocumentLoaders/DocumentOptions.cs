@@ -1,4 +1,4 @@
-﻿namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders
+﻿namespace BuildingBlocks.DocumentLoaders
 {
     public class DocumentOptions
     {

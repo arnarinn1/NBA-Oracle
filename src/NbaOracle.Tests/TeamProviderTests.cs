@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using AngleSharp;
+using BuildingBlocks.DocumentLoaders;
+using BuildingBlocks.DocumentLoaders.Implementations;
+using BuildingBlocks.FileSystem.Implementations;
+using BuildingBlocks.Serialization.Implementation;
 using NbaOracle.Providers.BasketballReference;
-using NbaOracle.Providers.BuildingBlocks.DocumentLoaders;
-using NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations;
-using NbaOracle.Providers.BuildingBlocks.FileSystem.Implementations;
 using Xunit;
 
 namespace NbaOracle.Tests
@@ -20,14 +21,15 @@ namespace NbaOracle.Tests
             var config = Configuration.Default.WithDefaultLoader();
             var context = BrowsingContext.New(config);
 
-            var fileSystem = new SystemIOFileSystem();
+            var serializer = new NativeJsonSerializer();
+            var fileSystem = new SystemIOFileSystem(serializer);
 
             var documentLoader = new AngleSharpHttpDocumentLoader(context);
             var validateBehavior = new ValidateDocumentHttpStatusBehavior(documentLoader);
             var writeBehavior = new WriteDocumentToFileSystemBehavior(validateBehavior, fileSystem);
             var cacheBehavior = new LoadDocumentFromFileSystemBehavior(writeBehavior, fileSystem, context);
 
-            var provider = new TeamProvider(validateBehavior);
+            var provider = new TeamDataProvider(cacheBehavior);
             await provider.DoStuff(new DocumentOptions(url, fileLocation, identifier));
         }
     }

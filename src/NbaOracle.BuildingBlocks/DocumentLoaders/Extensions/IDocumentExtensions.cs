@@ -1,6 +1,6 @@
 ﻿using AngleSharp.Dom;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Extensions
+namespace BuildingBlocks.DocumentLoaders.Extensions
 {
     // ReSharper disable once UnusedMember.Global
     // ReSharper disable once InconsistentNaming

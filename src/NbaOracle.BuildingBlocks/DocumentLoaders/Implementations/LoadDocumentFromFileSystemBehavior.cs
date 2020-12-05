@@ -3,9 +3,9 @@ using System.Net;
 using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
-using NbaOracle.Providers.BuildingBlocks.FileSystem;
+using BuildingBlocks.FileSystem;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
+namespace BuildingBlocks.DocumentLoaders.Implementations
 {
     public class LoadDocumentFromFileSystemBehavior : IDocumentLoader
     {
@@ -26,12 +26,12 @@ namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
             if (!_fileSystem.FileExists(filePath)) 
                 return await _next.LoadDocument(options);
 
-            var content = await _fileSystem.LoadFileContents(filePath);
+            var fileContent = await _fileSystem.LoadFileContent(filePath);
             
             return await _browsingContext.OpenAsync(request =>
             {
                 request.Address(options.Url);
-                request.Content(content);
+                request.Content(fileContent.Content);
                 request.Status(HttpStatusCode.OK);
             });
         }

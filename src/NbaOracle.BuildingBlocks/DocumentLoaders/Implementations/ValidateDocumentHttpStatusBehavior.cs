@@ -2,9 +2,9 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
-using NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Extensions;
+using BuildingBlocks.DocumentLoaders.Extensions;
 
-namespace NbaOracle.Providers.BuildingBlocks.DocumentLoaders.Implementations
+namespace BuildingBlocks.DocumentLoaders.Implementations
 {
     public class ValidateDocumentHttpStatusBehavior : IDocumentLoader
     {

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using NbaOracle.Providers.BuildingBlocks.DocumentLoaders;
+using BuildingBlocks.DocumentLoaders;
 
 namespace NbaOracle.Providers.BasketballReference
 {
-    public class TeamProvider
+    public class TeamDataProvider
     {
         private readonly IDocumentLoader _documentLoader;
 
-        public TeamProvider(IDocumentLoader documentLoader)
+        public TeamDataProvider(IDocumentLoader documentLoader)
         {
             _documentLoader = documentLoader ?? throw new ArgumentNullException(nameof(documentLoader));
         }
