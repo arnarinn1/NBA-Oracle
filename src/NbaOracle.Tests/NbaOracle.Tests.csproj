@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Unit\Providers\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <None Remove="Unit\Providers\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Unit\Providers\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
+    <EmbeddedResource Include="Unit\Providers\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Parsers\TeamRooster\team_rooster_example_html_data.txt" />
   </ItemGroup>
 
