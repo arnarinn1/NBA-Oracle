@@ -6,6 +6,7 @@ using BuildingBlocks.FileSystem.Implementations;
 using BuildingBlocks.Serialization.Implementation;
 using NbaOracle.Providers;
 using NbaOracle.Providers.BasketballReference.Teams;
+using Newtonsoft.Json;
 using ValueObjects;
 using Xunit;
 
@@ -31,7 +32,7 @@ namespace NbaOracle.Tests.Debug
             
             var provider = new TeamProvider(cacheBehavior, providerSettings);
 
-            await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new SeasonIdentifier(2019));
+            var value = await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new SeasonIdentifier(2019));
 
             //foreach (var team in TeamsFactory.Teams)
             //{

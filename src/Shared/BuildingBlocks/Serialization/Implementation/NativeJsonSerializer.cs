@@ -8,7 +8,7 @@ namespace BuildingBlocks.Serialization.Implementation
         private static readonly JsonSerializerOptions Options = new JsonSerializerOptions
         {
             WriteIndented = true,
-            Encoder = JavaScriptEncoder.Default
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
         };
 
         public string Serialize<T>(T data) 
