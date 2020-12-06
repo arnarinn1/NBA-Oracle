@@ -11,7 +11,6 @@ namespace BuildingBlocks.Serialization.Implementation
             Encoder = JavaScriptEncoder.Default
         };
 
-        //todo - html string content doubles in size - investigate that considering encodings
         public string Serialize<T>(T data) 
         {
             return JsonSerializer.Serialize(data, Options);
