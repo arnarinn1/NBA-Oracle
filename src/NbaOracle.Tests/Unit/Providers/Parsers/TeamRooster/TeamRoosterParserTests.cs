@@ -4,11 +4,11 @@ using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
 using Xunit;
 
-namespace NbaOracle.Tests.Unit.Providers.Parsers
+namespace NbaOracle.Tests.Unit.Providers.Parsers.TeamRooster
 {
     public class TeamRoosterParserTests : UnitBase
     {
-        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Parsers.team_rooster_example_html_data.txt";
+        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.TeamRooster.team_rooster_example_html_data.txt";
 
         [Fact]
         public async Task Parse_ShouldParseHtml_WhenRoosterIsPresent()

@@ -1,5 +1,6 @@
 ﻿using AngleSharp.Dom;
 using BuildingBlocks.Parsers;
+using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data;
 
 namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
 {

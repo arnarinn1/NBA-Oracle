@@ -1,4 +1,4 @@
-﻿namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
+﻿namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data
 {
     public class PlayerRoosterData
     {
