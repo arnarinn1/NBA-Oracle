@@ -3,9 +3,9 @@ using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.Teams
 {
-    public class TeamDataProviderSettings
+    public class TeamProviderSettings
     {
-        public TeamDataProviderSettings(string baseUrl, string directoryPath)
+        public TeamProviderSettings(string baseUrl, string directoryPath)
         {
             BaseUrl = baseUrl;
             DirectoryPath = directoryPath;

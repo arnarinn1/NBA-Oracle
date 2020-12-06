@@ -1,15 +1,16 @@
-﻿using AngleSharp.Dom;
+﻿using System.Collections.Generic;
+using AngleSharp.Dom;
 using BuildingBlocks.DocumentLoaders.Extensions;
 using BuildingBlocks.Parsers;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data;
 
 namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
 {
-    public class TeamRoosterParser : IDocumentParser<TeamRoosterData>
+    public class TeamRoosterParser : IDocumentParser<IEnumerable<PlayerRoosterData>>
     {
-        public TeamRoosterData Parse(IDocument document)
+        public IEnumerable<PlayerRoosterData> Parse(IDocument document)
         {
-            var output = new TeamRoosterData();
+            var output = new List<PlayerRoosterData>();
 
             foreach (var player in document.QuerySelectorAll("div[id='all_roster'] tbody tr"))
             {
@@ -23,7 +24,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
                 var yearsExperience = player.GetTextContent("td[data-stat='years_experience']");
                 var college = player.GetTextContent("td[data-stat='college']");
 
-                output.AddPlayer(new PlayerRoosterData(playerName, playerNumber, position, birthDate, birthCountry, height, weight, yearsExperience, college));
+                output.Add(new PlayerRoosterData(playerName, playerNumber, position, birthDate, birthCountry, height, weight, yearsExperience, college));
             }
 
             return output;

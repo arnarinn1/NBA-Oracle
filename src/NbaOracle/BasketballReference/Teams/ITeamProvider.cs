@@ -3,8 +3,8 @@ using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.Teams
 {
-    public interface ITeamDataProvider
+    public interface ITeamProvider
     {
-        Task GetTeamData(Team team, SeasonIdentifier season);
+        Task<TeamData> GetTeamData(Team team, SeasonIdentifier season);
     }
 }

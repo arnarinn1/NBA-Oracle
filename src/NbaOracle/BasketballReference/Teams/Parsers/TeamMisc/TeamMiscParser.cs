@@ -25,7 +25,10 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamMisc
             var losses = teamStats.GetTextContent("td[data-stat='losses']");
             var lossesRank = teamLeagueRanking.GetTextContent("td[data-stat='losses']");
 
-            return new TeamMiscData(wins, winsRank, losses, lossesRank);
+            var marginOfVictory = teamStats.GetTextContent("td[data-stat='mov']");
+            var marginOfVictoryRank = teamLeagueRanking.GetTextContent("td[data-stat='mov']");
+
+            return new TeamMiscData(wins, winsRank, losses, lossesRank, marginOfVictory, marginOfVictoryRank);
         }
     }
 }

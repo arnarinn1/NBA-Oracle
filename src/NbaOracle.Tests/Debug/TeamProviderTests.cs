@@ -22,14 +22,14 @@ namespace NbaOracle.Tests.Debug
             var serializer = new NativeJsonSerializer();
             var fileSystem = new SystemIOFileSystem(serializer);
 
-            var providerSettings = new TeamDataProviderSettings("https://www.basketball-reference.com/teams", @"C:\Users\arnar.heimisson\Documents\Projects\Github\nba-data\html\seasons");
+            var providerSettings = new TeamProviderSettings("https://www.basketball-reference.com/teams", @"C:\Users\arnar.heimisson\Documents\Projects\Github\nba-data\html\seasons");
 
             var documentLoader = new AngleSharpHttpDocumentLoader(context);
             var validateBehavior = new ValidateDocumentHttpStatusBehavior(documentLoader);
             var writeBehavior = new WriteDocumentToFileSystemBehavior(validateBehavior, fileSystem);
             var cacheBehavior = new LoadDocumentFromFileSystemBehavior(writeBehavior, fileSystem, context);
             
-            var provider = new TeamDataProvider(cacheBehavior, providerSettings);
+            var provider = new TeamProvider(cacheBehavior, providerSettings);
 
             await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new SeasonIdentifier(2019));
 

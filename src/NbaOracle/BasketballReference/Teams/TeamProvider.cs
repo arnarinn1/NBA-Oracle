@@ -9,17 +9,17 @@ using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.Teams
 {
-    public class TeamDataProvider : ITeamDataProvider
+    public class TeamProvider : ITeamProvider
     {
         private readonly IDocumentLoader _documentLoader;
-        private readonly TeamDataProviderSettings _providerSettings;
+        private readonly TeamProviderSettings _providerSettings;
 
         private readonly TeamRoosterParser _roosterParser;
         private readonly PlayerSeasonStatisticsParser _seasonStatisticsParser;
         private readonly PlayByPlayParser _playByPlayParser;
         private readonly TeamMiscParser _teamMiscParser;
 
-        public TeamDataProvider(IDocumentLoader documentLoader, TeamDataProviderSettings providerSettings)
+        public TeamProvider(IDocumentLoader documentLoader, TeamProviderSettings providerSettings)
         {
             _documentLoader = documentLoader ?? throw new ArgumentNullException(nameof(documentLoader));
             _providerSettings = providerSettings ?? throw new ArgumentNullException(nameof(providerSettings));
@@ -30,7 +30,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
             _teamMiscParser = new TeamMiscParser();
         }
 
-        public async Task GetTeamData(Team team, SeasonIdentifier season)
+        public async Task<TeamData> GetTeamData(Team team, SeasonIdentifier season)
         {
             var document = await _documentLoader.LoadDocument(_providerSettings.ToDocumentOptions(team, season));
 
@@ -38,6 +38,8 @@ namespace NbaOracle.Providers.BasketballReference.Teams
             var playerSeasonStatistics = _seasonStatisticsParser.Parse(document);
             var playByPlay = _playByPlayParser.Parse(document);
             var teamMisc = _teamMiscParser.Parse(document);
+
+            return new TeamData(teamMisc, rooster, playerSeasonStatistics, playByPlay);
         }
     }
 }

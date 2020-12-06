@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using AngleSharp;
 using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
@@ -21,7 +22,7 @@ namespace NbaOracle.Tests.Unit.Providers.Parsers.TeamRooster
 
             var output = parser.Parse(document);
 
-            output.Players.Count.Should().Be(20);
+            output.Count().Should().Be(20);
         }
     }
 }
