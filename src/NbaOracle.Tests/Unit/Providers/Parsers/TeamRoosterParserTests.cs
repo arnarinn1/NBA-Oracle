@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AngleSharp;
 using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
 using Xunit;
 
-namespace NbaOracle.Tests.Unit.Parsers
+namespace NbaOracle.Tests.Unit.Providers.Parsers
 {
     public class TeamRoosterParserTests : UnitBase
     {

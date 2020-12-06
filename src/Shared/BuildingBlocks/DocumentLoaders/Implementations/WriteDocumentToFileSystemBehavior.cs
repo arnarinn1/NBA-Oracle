@@ -22,7 +22,7 @@ namespace BuildingBlocks.DocumentLoaders.Implementations
 
             _fileSystem.CreateDirectory(options.DirectoryPath);
 
-            await _fileSystem.CreateFile(options.GetFilePath(), new FileContent(options.Url, options.DirectoryPath, options.Identifier, document.Source.Text));
+            await _fileSystem.CreateFile(options.FilePath, new FileContent(options.Url, options.FilePath, document.Source.Text));
 
             return document;
         }

@@ -22,11 +22,10 @@ namespace BuildingBlocks.DocumentLoaders.Implementations
 
         public async Task<IDocument> LoadDocument(DocumentOptions options)
         {
-            var filePath = options.GetFilePath();
-            if (!_fileSystem.FileExists(filePath)) 
+            if (!_fileSystem.FileExists(options.FilePath)) 
                 return await _next.LoadDocument(options);
 
-            var fileContent = await _fileSystem.LoadFileContent(filePath);
+            var fileContent = await _fileSystem.LoadFileContent(options.FilePath);
             
             return await _browsingContext.OpenAsync(request =>
             {
