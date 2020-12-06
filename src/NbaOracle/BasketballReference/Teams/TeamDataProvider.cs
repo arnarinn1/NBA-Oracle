@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BuildingBlocks.DocumentLoaders;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStatistics;
+using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamMisc;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
 using ValueObjects;
 
@@ -16,6 +17,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
         private readonly TeamRoosterParser _roosterParser;
         private readonly PlayerSeasonStatisticsParser _seasonStatisticsParser;
         private readonly PlayByPlayParser _playByPlayParser;
+        private readonly TeamMiscParser _teamMiscParser;
 
         public TeamDataProvider(IDocumentLoader documentLoader, TeamDataProviderSettings providerSettings)
         {
@@ -25,6 +27,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
             _roosterParser = new TeamRoosterParser();
             _seasonStatisticsParser = new PlayerSeasonStatisticsParser();
             _playByPlayParser = new PlayByPlayParser();
+            _teamMiscParser = new TeamMiscParser();
         }
 
         public async Task GetTeamData(Team team, SeasonIdentifier season)
@@ -34,6 +37,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
             var rooster = _roosterParser.Parse(document);
             var playerSeasonStatistics = _seasonStatisticsParser.Parse(document);
             var playByPlay = _playByPlayParser.Parse(document);
+            var teamMisc = _teamMiscParser.Parse(document);
         }
     }
 }

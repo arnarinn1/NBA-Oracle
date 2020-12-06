@@ -16,7 +16,7 @@ namespace NbaOracle.Tests.Unit.Providers
         [Theory]
         [InlineData("ATL")]
         [InlineData("BOS")]
-        [InlineData("NJN")]
+        [InlineData("BRK")]
         [InlineData("CHO")]
         [InlineData("CHI")]
         [InlineData("CLE")]

@@ -12,7 +12,7 @@ namespace NbaOracle.Tests.Unit.Providers.Parsers.PlayByPlay
         private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.PlayByPlay.play_by_play_example_html_data.txt";
 
         [Fact]
-        public async Task Parse_ShouldParseHtml_WhenRoosterIsPresent()
+        public async Task Parse_ShouldParseHtml_WhenPlayByPlayIsPresent()
         {
             var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
             var parser = new PlayByPlayParser();
