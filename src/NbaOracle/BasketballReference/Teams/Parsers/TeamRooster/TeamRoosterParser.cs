@@ -17,7 +17,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
                 var playerName = player.GetTextContent("td[data-stat='player']");
                 var playerNumber = player.GetTextContent("th[data-stat='number']");
                 var position = player.GetTextContent("td[data-stat='pos']");
-                var birthDate = player.GetAttributeFromElement("td[data-stat='birth_date']", "csk");
+                var birthDate = player.GetAttributeFromElementAsDate("td[data-stat='birth_date']", "csk");
                 var birthCountry = player.GetTextContent("td[data-stat='birth_country']");
                 var height = player.GetTextContent("td[data-stat='height']");
                 var weight = player.GetTextContent("td[data-stat='weight']");

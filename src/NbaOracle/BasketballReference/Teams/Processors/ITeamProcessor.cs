@@ -1,12 +1,9 @@
-﻿namespace NbaOracle.Providers.BasketballReference.Teams.Processors
+﻿using System.Threading.Tasks;
+
+namespace NbaOracle.Providers.BasketballReference.Teams.Processors
 {
     public interface ITeamProcessor
     {
-        
-    }
-
-    public class TeamProcessor : ITeamProcessor
-    {
-
+        Task Process(TeamData teamData);
     }
 }
