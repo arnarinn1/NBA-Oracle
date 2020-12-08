@@ -18,6 +18,19 @@ namespace BuildingBlocks.DocumentLoaders.Extensions
             return element.QuerySelector(querySelector)?.GetAttribute(attributeName);
         }
 
+        public static DateTime GetAttributeFromElementAndRemoveLastCharactersAsDate(this IElement element, string querySelector, string attributeName, int numberOfTrailingCharactersToRemove)
+        {
+            var value = element.GetAttributeFromElement(querySelector, attributeName);
+            value = value.Substring(0, value.Length - numberOfTrailingCharactersToRemove);
+            return ParsingMethods.ToDate(value, "yyyyMMdd");
+        }
+
+        public static string GetAttributeFromElementAndTakeLeadingCharacters(this IElement element, string querySelector, string attributeName, int numberOfLeadingCharactersToTake)
+        {
+            var value = element.GetAttributeFromElement(querySelector, attributeName);
+            return value?.Substring(0, numberOfLeadingCharactersToTake);
+        }
+
         public static DateTime GetAttributeFromElementAsDate(this IElement element, string querySelector, string attributeName)
         {
             var value = element.GetAttributeFromElement(querySelector, attributeName);
@@ -27,6 +40,13 @@ namespace BuildingBlocks.DocumentLoaders.Extensions
         public static int GetTextContentAsInt(this IElement element, string querySelector)
         {
             return element.ParseTextContent(querySelector, ParsingMethods.ToInt);
+        }
+
+        public static int GetTextContentAsIntAndRemoveSpecialCharacters(this IElement element, string querySelector)
+        {
+            var value = element.GetTextContent(querySelector);
+            value = value.Replace(",", "");
+            return ParsingMethods.ToInt(value);
         }
 
         public static DateTime ToDate(this IElement element, string querySelector)
