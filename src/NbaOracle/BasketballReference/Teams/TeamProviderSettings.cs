@@ -14,7 +14,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
         public string BaseUrl { get; }
         public string DirectoryPath { get; }
 
-        public DocumentOptions ToDocumentOptions(Team team, SeasonIdentifier season)
+        public DocumentOptions ToDocumentOptions(Team team, Season season)
         {
             var url = $"{BaseUrl}/{team.NameIdentifier}/{season.SeasonEndYear}.html";
             var directoryPath = $"{DirectoryPath}/{season.SeasonStartYear}-{season.SeasonEndYear}";

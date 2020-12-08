@@ -5,6 +5,6 @@ namespace NbaOracle.Providers.BasketballReference.Teams
 {
     public interface ITeamProvider
     {
-        Task<TeamData> GetTeamData(Team team, SeasonIdentifier season);
+        Task<TeamData> GetTeamData(Team team, Season season);
     }
 }

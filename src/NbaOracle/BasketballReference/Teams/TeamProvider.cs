@@ -30,7 +30,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
             _teamMiscParser = new TeamMiscParser();
         }
 
-        public async Task<TeamData> GetTeamData(Team team, SeasonIdentifier season)
+        public async Task<TeamData> GetTeamData(Team team, Season season)
         {
             var document = await _documentLoader.LoadDocument(_providerSettings.ToDocumentOptions(team, season));
 

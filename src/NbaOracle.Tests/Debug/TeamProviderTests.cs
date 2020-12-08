@@ -32,11 +32,11 @@ namespace NbaOracle.Tests.Debug
             
             var provider = new TeamProvider(cacheBehavior, providerSettings);
 
-            var value = await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new SeasonIdentifier(2019));
+            var value = await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new Season(2019));
 
             //foreach (var team in TeamsFactory.Teams)
             //{
-            //    await provider.GetTeamData(team.Value, new SeasonIdentifier(2019));
+            //    await provider.GetTeamData(team.Value, new Season(2019));
 
             //    await Task.Delay(TimeSpan.FromSeconds(2));
             //}

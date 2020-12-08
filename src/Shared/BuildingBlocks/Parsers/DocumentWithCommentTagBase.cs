@@ -6,7 +6,7 @@ namespace BuildingBlocks.Parsers
 {
     public abstract class DocumentWithCommentTagBase<TOutput> : IDocumentParser<TOutput>
     {
-        protected abstract string CommentTagSelector { get; }
+        protected abstract string CommentTagSelector { get; } //todo rename
         protected abstract TOutput ApplyInnerDocument(IDocument document);
 
         public TOutput Parse(IDocument document)
