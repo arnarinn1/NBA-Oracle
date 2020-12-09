@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BuildingBlocks.DocumentLoaders;
-using NbaOracle.Providers.BasketballReference.GameSchedules.Parsers;
+using NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSchedule;
 using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.GameSchedules

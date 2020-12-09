@@ -2,20 +2,20 @@
 using System.Threading.Tasks;
 using AngleSharp;
 using FluentAssertions;
-using NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStatistics;
+using NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay;
 using Xunit;
 
-namespace NbaOracle.Tests.Unit.Providers.Parsers.PlayerSeasonStatistics
+namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
 {
-    public class PlayerSeasonStatisticsParserTests : UnitBase
+    public class PlayByPlayParserTests : UnitBase
     {
-        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.PlayerSeasonStatistics.player_statistics_example_html_data.txt";
+        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.PlayByPlay.play_by_play_example_html_data.txt";
 
         [Fact]
-        public async Task Parse_ShouldParseHtml_WhenStatisticsIsPresent()
+        public async Task Parse_ShouldParseHtml_WhenPlayByPlayIsPresent()
         {
             var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
-            var parser = new PlayerSeasonStatisticsParser();
+            var parser = new PlayByPlayParser();
 
             var content = await ReadEmbeddedResource(EmbeddedResourceLocation);
             var document = await context.OpenAsync(request => request.Content(content));
