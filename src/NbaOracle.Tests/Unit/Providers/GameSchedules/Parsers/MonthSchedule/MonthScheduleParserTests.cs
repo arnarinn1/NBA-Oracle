@@ -7,22 +7,22 @@ using Xunit;
 
 namespace NbaOracle.Tests.Unit.Providers.GameSchedules.Parsers.MonthSchedule
 {
-    public class MonthScheduleParserTests : UnitBase
-    {
-        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.GameSchedules.Parsers.MonthSchedule.month_schedule_example_html_data.txt";
+    //public class MonthScheduleParserTests : UnitBase
+    //{
+    //    private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.GameSchedules.Parsers.MonthSchedule.month_schedule_example_html_data.txt";
 
-        [Fact]
-        public async Task Parse_ShouldParseHtml_WhenHtmlIsValid()
-        {
-            var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
-            var parser = new MonthScheduleParser();
+    //    [Fact]
+    //    public async Task Parse_ShouldParseHtml_WhenHtmlIsValid()
+    //    {
+    //        var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
+    //        var parser = new MonthScheduleParser();
 
-            var content = await ReadEmbeddedResource(EmbeddedResourceLocation);
-            var document = await context.OpenAsync(request => request.Content(content));
+    //        var content = await ReadEmbeddedResource(EmbeddedResourceLocation);
+    //        var document = await context.OpenAsync(request => request.Content(content));
 
-            var output = parser.Parse(document);
+    //        var output = parser.Parse(document);
 
-            output.GameResults.Count().Should().Be(2);
-        }
-    }
+    //        output.GameResults.Count().Should().Be(2);
+    //    }
+    //}
 }

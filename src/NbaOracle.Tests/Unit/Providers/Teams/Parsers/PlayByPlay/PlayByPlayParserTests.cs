@@ -7,7 +7,7 @@ using Xunit;
 
 namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
 {
-    public class PlayByPlayParserTests : UnitBase, IClassFixture<DocumentFixture>
+    public class PlayByPlayParserTests : IClassFixture<DocumentFixture>
     {
         private readonly IDocument _document;
         private readonly PlayByPlayParser _parser;
@@ -26,6 +26,7 @@ namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
             var player = output.Single(x => x.PlayerName == "LeBron James");
 
             output.Count().Should().Be(20);
+            
             player.Games.Should().Be(67);
             player.MinutesPlayed.Should().Be(2316);
             player.PlusMinusOnCourt.Should().Be(9.0);
