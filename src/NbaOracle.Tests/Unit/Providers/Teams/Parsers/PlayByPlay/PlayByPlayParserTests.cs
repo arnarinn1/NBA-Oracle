@@ -9,7 +9,7 @@ namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
 {
     public class PlayByPlayParserTests : UnitBase
     {
-        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.PlayByPlay.play_by_play_example_html_data.txt";
+        private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay.play_by_play_example_html_data.txt"; //fix this 
 
         [Fact]
         public async Task Parse_ShouldParseHtml_WhenPlayByPlayIsPresent()

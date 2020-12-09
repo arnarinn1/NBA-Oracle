@@ -19,10 +19,12 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay
             foreach (var player in players)
             {
                 var playerName = player.GetTextContent("td[data-stat='player']");
+                var games = player.GetTextContentAsInt("td[data-stat='g']");
+                var minutesPlayed = player.GetTextContentAsInt("td[data-stat='mp']");
                 var plusMinusOnCourt = player.GetTextContent("td[data-stat='plus_minus_on']");
                 var plusMinusNetOnCourt = player.GetTextContent("td[data-stat='plus_minus_net']");
 
-                output.Add(new PlayByPlayData(playerName, plusMinusOnCourt, plusMinusNetOnCourt));
+                output.Add(new PlayByPlayData(playerName, games, minutesPlayed,plusMinusOnCourt, plusMinusNetOnCourt));
             }
 
             return output;

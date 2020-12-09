@@ -1,16 +1,22 @@
-﻿namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay.Data
+﻿using ValueObjects;
+
+namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay.Data
 {
     public class PlayByPlayData
     {
         public string PlayerName { get; }
-        public string PlusMinusOnCourt { get; }
-        public string PlusMinusNetOnCourt { get; }
+        public int Games { get; }
+        public int MinutesPlayed { get; }
+        public double PlusMinusOnCourt { get; }
+        public double PlusMinusNetOnOffCourt { get; }
 
-        public PlayByPlayData(string playerName, string plusMinusOnCourt, string plusMinusNetOnCourt)
+        public PlayByPlayData(string playerName, int games, int minutesPlayed, string plusMinusOnCourt, string plusMinusNetOnOffCourt)
         {
             PlayerName = playerName;
-            PlusMinusOnCourt = plusMinusOnCourt;
-            PlusMinusNetOnCourt = plusMinusNetOnCourt;
+            Games = games;
+            MinutesPlayed = minutesPlayed;
+            PlusMinusOnCourt = new PlusMinusScore(plusMinusOnCourt);
+            PlusMinusNetOnOffCourt = new PlusMinusScore(plusMinusNetOnOffCourt);
         }
 
         public override string ToString()

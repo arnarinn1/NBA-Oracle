@@ -6,9 +6,11 @@ using BuildingBlocks.DocumentLoaders;
 using BuildingBlocks.DocumentLoaders.Implementations;
 using BuildingBlocks.FileSystem;
 using BuildingBlocks.FileSystem.Implementations;
+using BuildingBlocks.Parsers;
 using BuildingBlocks.Serialization;
 using BuildingBlocks.Serialization.Implementation;
 using Microsoft.Extensions.Configuration;
+using NbaOracle.Providers;
 using NbaOracle.Providers.BasketballReference.Teams;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
@@ -47,6 +49,8 @@ namespace NbaOracle.Tests.Integration
             _container.RegisterDecorator<IDocumentLoader, ValidateDocumentHttpStatusBehavior>();
             _container.RegisterDecorator<IDocumentLoader, WriteDocumentToFileSystemBehavior>();
             _container.RegisterDecorator<IDocumentLoader, LoadDocumentFromFileSystemBehavior>();
+
+            _container.Register(typeof(IDocumentParser<>), typeof(IProvidersAssemblyMarker).Assembly);
 
             _container.RegisterInstance(new TeamProviderSettings(configuration["BasketballReferenceBaseUrl"], configuration["BaseDirectoryPath"]));
             _container.Register<ITeamProvider, TeamProvider>();

@@ -13,6 +13,14 @@ namespace ValueObjects.Extensions
             throw new FormatException($"Unable to format string to int. ({value})");
         }
 
+        public static double ToDouble(string value)
+        {
+            if (double.TryParse(value, out var result))
+                return result;
+
+            throw new FormatException($"Unable to format string to double. ({value})");
+        }
+
         public static DateTime ToDate(string value, string format)
         {
             if (DateTime.TryParseExact(value, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var result))
