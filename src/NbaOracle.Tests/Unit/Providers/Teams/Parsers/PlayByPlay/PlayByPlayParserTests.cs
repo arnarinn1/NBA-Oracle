@@ -4,6 +4,7 @@ using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay;
 using NbaOracle.Tests.Unit.Fixtures;
 using Xunit;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
 {
@@ -21,7 +22,7 @@ namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayByPlay
         [Fact]
         public void Parse_ShouldParse_WhenDocumentIsValid()
         {
-            var output = _parser.Parse(_document).ToArray();
+            var output = _parser.Parse(_document);
 
             var player = output.Single(x => x.PlayerName == "LeBron James");
 

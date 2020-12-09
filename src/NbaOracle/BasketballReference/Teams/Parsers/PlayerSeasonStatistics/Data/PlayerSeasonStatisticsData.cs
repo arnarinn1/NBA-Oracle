@@ -1,10 +1,13 @@
-﻿namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStatistics.Data
+﻿using System;
+
+namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStatistics.Data
 {
     public class PlayerSeasonStatisticsData
     {
         public string PlayerName { get; }
-        public string GamesPlayed { get; }
-        public string MinutesPlayed { get; }
+        public int GamesPlayed { get; }
+        public int MinutesPlayed { get; }
+        public double MinutesPlayedPerGame { get; }
         public string FieldGoalsMade { get; }
         public string FieldGoalsAttempted { get; }
         public string ThreePointersMade { get; }
@@ -23,11 +26,12 @@
         public string PersonalFouls { get; }
         public string Points { get; }
 
-        public PlayerSeasonStatisticsData(string playerName, string gamesPlayed, string minutesPlayed, string fieldGoalsMade, string fieldGoalsAttempted, string threePointersMade, string threePointersAttempted, string twoPointersMade, string twoPointersAttempted, string effectiveFieldGoalPercentage, string freeThrowsMade, string freeThrowsAttempted, string offensiveRebounds, string defensiveRebounds, string assists, string steals, string blocks, string turnovers, string personalFouls, string points)
+        public PlayerSeasonStatisticsData(string playerName, int gamesPlayed, int minutesPlayed, string fieldGoalsMade, string fieldGoalsAttempted, string threePointersMade, string threePointersAttempted, string twoPointersMade, string twoPointersAttempted, string effectiveFieldGoalPercentage, string freeThrowsMade, string freeThrowsAttempted, string offensiveRebounds, string defensiveRebounds, string assists, string steals, string blocks, string turnovers, string personalFouls, string points)
         {
             PlayerName = playerName;
             GamesPlayed = gamesPlayed;
             MinutesPlayed = minutesPlayed;
+            MinutesPlayedPerGame = Math.Round((double) minutesPlayed / gamesPlayed, 1);
             FieldGoalsMade = fieldGoalsMade;
             FieldGoalsAttempted = fieldGoalsAttempted;
             ThreePointersMade = threePointersMade;

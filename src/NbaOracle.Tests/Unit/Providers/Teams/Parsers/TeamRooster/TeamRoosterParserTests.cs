@@ -4,6 +4,7 @@ using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster;
 using NbaOracle.Tests.Unit.Fixtures;
 using Xunit;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.TeamRooster
 {
@@ -21,7 +22,7 @@ namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.TeamRooster
         [Fact]
         public void Parse_ShouldParse_WhenDocumentIsValid()
         {
-            var output = _parser.Parse(_document).ToArray();
+            var output = _parser.Parse(_document);
             var player = output.Single(x => x.Name == "LeBron James");
             
             output.Count().Should().Be(20);

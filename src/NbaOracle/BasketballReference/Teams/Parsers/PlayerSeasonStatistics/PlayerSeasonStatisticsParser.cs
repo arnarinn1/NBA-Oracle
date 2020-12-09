@@ -20,8 +20,8 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
             {
                 var playerName = player.GetTextContent("td[data-stat='player']");
 
-                var gamesPlayed = player.GetTextContent("td[data-stat='gs']");
-                var minutesPlayed = player.GetTextContent("td[data-stat='mp']");
+                var gamesPlayed = player.GetTextContentAsInt("td[data-stat='gs']");
+                var minutesPlayed = player.GetTextContentAsInt("td[data-stat='mp']");
 
                 var fieldGoalsMade = player.GetTextContent("td[data-stat='fg']");
                 var fieldGoalsAttempted = player.GetTextContent("td[data-stat='fga']");
