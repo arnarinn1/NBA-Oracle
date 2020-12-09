@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="BasketballReference\GameDetails\Processors\" />
     <Folder Include="BasketballReference\GameDetails\Parsers\" />
-    <Folder Include="BasketballReference\GameSchedules\Processors\" />
   </ItemGroup>
 
 </Project>

@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle.Providers", "NbaO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NbaOracle.Tests", "NbaOracle.Tests\NbaOracle.Tests.csproj", "{07ACB722-1269-4C06-9FC5-0413F4E6808D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks", "Shared\BuildingBlocks\BuildingBlocks.csproj", "{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks", "Shared\BuildingBlocks\BuildingBlocks.csproj", "{4AF86EAF-5FD9-4708-92B8-41DF2845C3A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueObjects", "Shared\ValueObjects\ValueObjects.csproj", "{80E217B1-0052-4794-9CCA-7A5A0F7417BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValueObjects", "Shared\ValueObjects\ValueObjects.csproj", "{80E217B1-0052-4794-9CCA-7A5A0F7417BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{A4014678-8E64-4623-AC79-0CD7D54CA980}"
 EndProject

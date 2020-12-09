@@ -1,18 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AngleSharp;
 using BuildingBlocks.DocumentLoaders.Implementations;
 using BuildingBlocks.FileSystem.Implementations;
 using BuildingBlocks.Serialization.Implementation;
-using NbaOracle.Providers;
-using NbaOracle.Providers.BasketballReference.Teams;
-using Newtonsoft.Json;
+using NbaOracle.Providers.BasketballReference.GameSchedules;
 using ValueObjects;
 using Xunit;
 
-namespace NbaOracle.Tests.Debug
+namespace NbaOracle.Tests.Integration
 {
-    public class TeamProviderTests
+    public class MonthlyGameSchedulesProviderTests
     {
         [Fact]
         public async Task Execute()
@@ -23,16 +20,17 @@ namespace NbaOracle.Tests.Debug
             var serializer = new NativeJsonSerializer();
             var fileSystem = new SystemIOFileSystem(serializer);
 
-            var providerSettings = new TeamProviderSettings("https://www.basketball-reference.com/teams", @"C:\Users\arnar.heimisson\Documents\Projects\Github\nba-data\html\seasons");
+            var providerSettings = new MonthlyGameSchedulesProviderSettings("https://www.basketball-reference.com/leagues", @"C:\Users\arnar.heimisson\Documents\Projects\Github\nba-data\html\schedule");
 
             var documentLoader = new AngleSharpHttpDocumentLoader(context);
             var validateBehavior = new ValidateDocumentHttpStatusBehavior(documentLoader);
             var writeBehavior = new WriteDocumentToFileSystemBehavior(validateBehavior, fileSystem);
             var cacheBehavior = new LoadDocumentFromFileSystemBehavior(writeBehavior, fileSystem, context);
-            
-            var provider = new TeamProvider(cacheBehavior, providerSettings);
 
-            var value = await provider.GetTeamData(TeamsFactory.GetTeam("LAL"), new Season(2019));
+            var provider = new MonthlyGameSchedulesProvider(cacheBehavior, providerSettings);
+
+            var october = await provider.GetSchedule(new Season(2019, 2019), Month.October());
+            var november = await provider.GetSchedule(new Season(2019, 2019), Month.November());
 
             //foreach (var team in TeamsFactory.Teams)
             //{

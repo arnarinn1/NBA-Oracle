@@ -7,8 +7,8 @@ namespace NbaOracle.Providers.BasketballReference.Teams
     {
         public TeamProviderSettings(string baseUrl, string directoryPath)
         {
-            BaseUrl = baseUrl;
-            DirectoryPath = directoryPath;
+            BaseUrl = $"{baseUrl}/teams";
+            DirectoryPath = $"{directoryPath}/html/teams";
         }
 
         public string BaseUrl { get; }
