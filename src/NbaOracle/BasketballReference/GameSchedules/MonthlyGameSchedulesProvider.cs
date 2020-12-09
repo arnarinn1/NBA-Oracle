@@ -21,11 +21,13 @@ namespace NbaOracle.Providers.BasketballReference.GameSchedules
             _monthScheduleParser = new MonthScheduleParser();
         }
 
-        public async Task GetSchedule(Season season, Month month)
+        public async Task<MonthlyGameSchedulesData> GetSchedule(Season season, Month month)
         {
             var document = await _documentLoader.LoadDocument(_settings.ToDocumentOptions(season, month));
 
-            var schedule = _monthScheduleParser.Parse(document);
+            var monthSchedule = _monthScheduleParser.Parse(document);
+
+            return new MonthlyGameSchedulesData(monthSchedule);
         }
     }
 }

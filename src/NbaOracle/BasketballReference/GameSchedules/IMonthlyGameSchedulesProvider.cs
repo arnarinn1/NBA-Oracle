@@ -5,6 +5,6 @@ namespace NbaOracle.Providers.BasketballReference.GameSchedules
 {
     public interface IMonthlyGameSchedulesProvider
     {
-        Task GetSchedule(Season season, Month month);
+        Task<MonthlyGameSchedulesData> GetSchedule(Season season, Month month);
     }
 }

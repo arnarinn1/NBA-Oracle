@@ -29,7 +29,7 @@ namespace NbaOracle.Tests.Debug
 
             var provider = new MonthlyGameSchedulesProvider(cacheBehavior, providerSettings);
 
-            await provider.GetSchedule(new Season(2019, 2019), Month.October());
+            var october = await provider.GetSchedule(new Season(2019, 2019), Month.October());
             //await provider.GetSchedule(new Season(2019, 2019), Month.November());
 
             //foreach (var team in TeamsFactory.Teams)
