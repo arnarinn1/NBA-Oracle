@@ -1,27 +1,36 @@
-﻿using System.Threading.Tasks;
-using AngleSharp;
+﻿using AngleSharp.Dom;
 using FluentAssertions;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamMisc;
+using NbaOracle.Tests.Unit.Fixtures;
 using Xunit;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.TeamMisc
 {
-    public class TeamMiscParserTests
+    public class TeamMiscParserTests : IClassFixture<DocumentFixture>
     {
-        //private const string EmbeddedResourceLocation = "NbaOracle.Tests.Unit.Providers.Parsers.TeamMisc.team_misc_example_html_data.txt";
+        private readonly IDocument _document;
+        private readonly TeamMiscParser _parser;
 
-        //[Fact]
-        //public async Task Parse_ShouldParseHtml_WhenRoosterIsPresent()
-        //{
-        //    var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader());
-        //    var parser = new TeamMiscParser();
+        public TeamMiscParserTests(DocumentFixture fixture)
+        {
+            _document = fixture.CreateDocument("NbaOracle.Tests.Unit.Providers.Teams.Parsers.TeamMisc.team_misc_example_html_data.txt").GetAwaiter().GetResult();
+            _parser = new TeamMiscParser();
+        }
 
-        //    var content = await ReadEmbeddedResource(EmbeddedResourceLocation);
-        //    var document = await context.OpenAsync(request => request.Content(content));
+        [Fact]
+        public void Parse_ShouldParse_WhenDocumentIsValid()
+        {
+            var output = _parser.Parse(_document);
 
-        //    var output = parser.Parse(document);
+            output.Wins.Should().Be(52);
+            output.WinsLeagueRank.Should().Be(3);
+            
+            output.Losses.Should().Be(19);
+            output.LossesLeagueRank.Should().Be(28);
 
-        //    output.WinsLeagueRank.Should().Be("3");
-        //}
+            output.MarginOfVictory.Should().Be(5.79);
+            output.MarginOfVictoryLeagueRank.Should().Be(5);
+        }
     }
 }

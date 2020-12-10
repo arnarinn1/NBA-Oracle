@@ -19,14 +19,14 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamMisc
             var teamStats = element[0];
             var teamLeagueRanking = element[1];
 
-            var wins = teamStats.GetTextContent("td[data-stat='wins']");
-            var winsRank = teamLeagueRanking.GetTextContent("td[data-stat='wins']");
+            var wins = teamStats.GetTextContentAsInt("td[data-stat='wins']");
+            var winsRank = teamLeagueRanking.GetTextContentAsInt("td[data-stat='wins']");
 
-            var losses = teamStats.GetTextContent("td[data-stat='losses']");
-            var lossesRank = teamLeagueRanking.GetTextContent("td[data-stat='losses']");
+            var losses = teamStats.GetTextContentAsInt("td[data-stat='losses']");
+            var lossesRank = teamLeagueRanking.GetTextContentAsInt("td[data-stat='losses']");
 
-            var marginOfVictory = teamStats.GetTextContent("td[data-stat='mov']");
-            var marginOfVictoryRank = teamLeagueRanking.GetTextContent("td[data-stat='mov']");
+            var marginOfVictory = teamStats.GetTextContentAsDouble("td[data-stat='mov']");
+            var marginOfVictoryRank = teamLeagueRanking.GetTextContentAsInt("td[data-stat='mov']");
 
             return new TeamMiscData(wins, winsRank, losses, lossesRank, marginOfVictory, marginOfVictoryRank);
         }

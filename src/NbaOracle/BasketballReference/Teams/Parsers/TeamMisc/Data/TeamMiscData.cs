@@ -2,7 +2,7 @@
 {
     public class TeamMiscData
     {
-        public TeamMiscData(string wins, string winsLeagueRank, string losses, string lossesLeagueRank, string marginOfVictory, string marginOfVictoryLeagueRank)
+        public TeamMiscData(int wins, int winsLeagueRank, int losses, int lossesLeagueRank, double marginOfVictory, int marginOfVictoryLeagueRank)
         {
             Wins = wins;
             Losses = losses;
@@ -12,13 +12,13 @@
             MarginOfVictoryLeagueRank = marginOfVictoryLeagueRank;
         }
 
-        public string Wins { get; }
-        public string WinsLeagueRank { get; }
+        public int Wins { get; }
+        public int WinsLeagueRank { get; }
 
-        public string Losses { get; }
-        public string LossesLeagueRank { get; }
+        public int Losses { get; }
+        public int LossesLeagueRank { get; }
 
-        public string MarginOfVictory { get; }
-        public string MarginOfVictoryLeagueRank { get; }
+        public double MarginOfVictory { get; }
+        public int MarginOfVictoryLeagueRank { get; }
     }
 }

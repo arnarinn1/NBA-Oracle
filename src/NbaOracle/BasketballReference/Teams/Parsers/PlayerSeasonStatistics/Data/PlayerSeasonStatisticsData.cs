@@ -22,7 +22,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
         public int TwoPointersAttempted { get; }
         public double TwoPointersPercentage { get; }
 
-        public string EffectiveFieldGoalPercentage { get; }
+        public double EffectiveFieldGoalPercentage { get; }
         
         public int FreeThrowsMade { get; }
         public int FreeThrowsAttempted { get; }
@@ -51,7 +51,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
         public int Points { get; }
         public double PointsPerGame { get; }
 
-        public PlayerSeasonStatisticsData(string playerName, int gamesPlayed, int minutesPlayed, int fieldGoalsMade, int fieldGoalsAttempted, int threePointersMade, int threePointersAttempted, int twoPointersMade, int twoPointersAttempted, string effectiveFieldGoalPercentage, int freeThrowsMade, int freeThrowsAttempted, int offensiveRebounds, int defensiveRebounds, int assists, int  steals, int blocks, int turnovers, int personalFouls, int points)
+        public PlayerSeasonStatisticsData(string playerName, int gamesPlayed, int minutesPlayed, int fieldGoalsMade, int fieldGoalsAttempted, int threePointersMade, int threePointersAttempted, int twoPointersMade, int twoPointersAttempted, double effectiveFieldGoalPercentage, int freeThrowsMade, int freeThrowsAttempted, int offensiveRebounds, int defensiveRebounds, int assists, int  steals, int blocks, int turnovers, int personalFouls, int points)
         {
             PlayerName = playerName;
             

@@ -42,6 +42,11 @@ namespace BuildingBlocks.DocumentLoaders.Extensions
             return element.ParseTextContent(querySelector, ParsingMethods.ToInt);
         }
 
+        public static double GetTextContentAsDouble(this IElement element, string querySelector)
+        {
+            return element.ParseTextContent(querySelector, ParsingMethods.ToDouble);
+        }
+
         public static int GetTextContentAsIntAndRemoveSpecialCharacters(this IElement element, string querySelector)
         {
             var value = element.GetTextContent(querySelector);

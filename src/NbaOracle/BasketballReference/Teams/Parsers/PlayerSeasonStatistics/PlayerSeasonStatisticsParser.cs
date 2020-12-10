@@ -32,7 +32,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
                 var twoPointersMade = player.GetTextContentAsInt("td[data-stat='fg2']");
                 var twoPointersAttempted = player.GetTextContentAsInt("td[data-stat='fg2a']");
 
-                var effectiveFieldGoalPercentage = player.GetTextContent("td[data-stat='efg_pct']");
+                var effectiveFieldGoalPercentage = player.GetTextContentAsDouble("td[data-stat='efg_pct']");
 
                 var freeThrowsMade = player.GetTextContentAsInt("td[data-stat='ft']");
                 var freeThrowsAttempted = player.GetTextContentAsInt("td[data-stat='fta']");

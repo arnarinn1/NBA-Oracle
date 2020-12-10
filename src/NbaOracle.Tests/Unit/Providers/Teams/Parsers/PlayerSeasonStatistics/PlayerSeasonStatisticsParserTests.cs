@@ -48,6 +48,8 @@ namespace NbaOracle.Tests.Unit.Providers.Teams.Parsers.PlayerSeasonStatistics
             player.FreeThrowsAttempted.Should().Be(381);
             player.FreeThrowsPercentage.Should().Be(.693);
 
+            player.EffectiveFieldGoalPercentage.Should().Be(.550);
+
             player.OffensiveRebounds.Should().Be(66);
             player.DefensiveRebounds.Should().Be(459);
             player.TotalRebounds.Should().Be(525);
