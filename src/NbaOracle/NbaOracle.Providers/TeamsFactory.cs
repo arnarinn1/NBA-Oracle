@@ -1,52 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ValueObjects;
 
 namespace NbaOracle.Providers
 {
     public class TeamsFactory
     {
-        public static Dictionary<string, Team> Teams =
-            new Dictionary<string, Team>
+        public static IReadOnlyList<Team> GetTeamsBySeason(Season season)
+        {
+            var teams = new List<Team>
             {
-                {"ATL", new Team("Atlanta Hawks", "ATL")},
-                {"BOS", new Team("Boston Celtics", "BOS")},
-                {"BRK", new Team("Brooklyn Nets", "BRK")},
-                {"CHI", new Team("Chicago Bulls", "CHI")},
-                {"CHO", new Team("Charlotte Hornets", "CHO")},
-                {"CLE", new Team("Cleveland Cavaliers", "CLE")},
-                {"DAL", new Team("Dallas Mavericks", "DAL")},
-                {"DEN", new Team("Denver Nuggets", "DEN")},
-                {"DET", new Team("Detroit Pistons", "DET")},
-                {"GSW", new Team("Golden State Warriors", "GSW")},
-                {"HOU", new Team("Houston Rockets", "HOU")},
-                {"IND", new Team("Indiana Pacers", "IND")},
-                {"LAC", new Team("Los Angeles Clippers", "LAC")},
-                {"LAL", new Team("Los Angeles Lakers", "LAL")},
-                {"MEM", new Team("Memphis Grizzlies", "MEM")},
-                {"MIA", new Team("Miami Heat", "MIA")},
-                {"MIL", new Team("Milwaukee Bucks", "MIL")},
-                {"MIN", new Team("Minnesota Timberwolves", "MIN")},
-                {"NOP", new Team("New Orleans Pelicans", "NOP")},
-                {"NYK", new Team("New York Knicks", "NYK")},
-                {"OKC", new Team("Oklahoma City Thunder", "OKC")},
-                {"ORL", new Team("Orlando Magic", "ORL")},
-                {"PHI", new Team("Philadelphia 76ers", "PHI")},
-                {"PHO", new Team("Phoenix Suns", "PHO")},
-                {"POR", new Team("Portland Trail Blazers", "POR")},
-                {"SAC", new Team("Sacramento Kings", "SAC")},
-                {"SAS", new Team("San Antonio Spurs", "SAS")},
-                {"TOR", new Team("Toronto Raptors", "TOR")},
-                {"UTA", new Team("Utah Jazz", "UTA")},
-                {"WAS", new Team("Washington Wizards", "WAS")},
+                new Team("Atlanta Hawks", "ATL"),
+                new Team("Boston Celtics", "BOS"),
+                
+                new Team("Chicago Bulls", "CHI"),
+                new Team("Cleveland Cavaliers", "CLE"),
+                new Team("Dallas Mavericks", "DAL"),
+                new Team("Denver Nuggets", "DEN"),
+                new Team("Detroit Pistons", "DET"),
+                new Team("Golden State Warriors", "GSW"),
+                new Team("Houston Rockets", "HOU"),
+                new Team("Indiana Pacers", "IND"),
+                new Team("Los Angeles Clippers", "LAC"),
+                new Team("Los Angeles Lakers", "LAL"),
+                new Team("Memphis Grizzlies", "MEM"),
+                new Team("Miami Heat", "MIA"),
+                new Team("Milwaukee Bucks", "MIL"),
+                new Team("Minnesota Timberwolves", "MIN"),
+                new Team("New York Knicks", "NYK"),
+                new Team("Oklahoma City Thunder", "OKC"),
+                new Team("Orlando Magic", "ORL"),
+                new Team("Philadelphia 76ers", "PHI"),
+                new Team("Phoenix Suns", "PHO"),
+                new Team("Portland Trail Blazers", "POR"),
+                new Team("Sacramento Kings", "SAC"),
+                new Team("San Antonio Spurs", "SAS"),
+                new Team("Toronto Raptors", "TOR"),
+                new Team("Utah Jazz", "UTA"),
+                new Team("Washington Wizards", "WAS")
             };
 
-        public static Team GetTeam(string nameIdentifier)
-        {
-            if (Teams.TryGetValue(nameIdentifier, out var team))
-                return team;
+            teams.Add(season.SeasonStartYear <= 2013 ? new Team("Charlotte Bobcats", "CHA") : new Team("Charlotte Hornets", "CHO"));
+            teams.Add(season.SeasonStartYear <= 2012 ? new Team("New Orleans Hornets", "NOH") : new Team("New Orleans Pelicans", "NOP"));
+            teams.Add(season.SeasonStartYear <= 2011 ? new Team("New Jersey Nets", "NJN") : new Team("Brooklyn Nets", "BRK"));
 
-            throw new ArgumentException($"Team with NameIdentifier = '{nameIdentifier}' not found");
+            return teams;
         }
     }
 }

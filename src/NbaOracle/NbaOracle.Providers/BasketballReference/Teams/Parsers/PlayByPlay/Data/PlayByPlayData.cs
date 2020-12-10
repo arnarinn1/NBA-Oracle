@@ -15,8 +15,8 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay.Data
             PlayerName = playerName;
             Games = games;
             MinutesPlayed = minutesPlayed;
-            PlusMinusOnCourt = new PlusMinusScore(plusMinusOnCourt);
-            PlusMinusNetOnOffCourt = new PlusMinusScore(plusMinusNetOnOffCourt);
+            PlusMinusOnCourt = string.IsNullOrWhiteSpace(plusMinusOnCourt) ? 0.0 : new PlusMinusScore(plusMinusOnCourt);
+            PlusMinusNetOnOffCourt = string.IsNullOrWhiteSpace(plusMinusNetOnOffCourt) ? 0.0 : new PlusMinusScore(plusMinusNetOnOffCourt);
         }
 
         public override string ToString()

@@ -11,10 +11,16 @@ namespace NbaOracle.Tests.Integration.Teams
     public class RetrieveTeamDataTests : IntegrationTestBase
     {
         [Theory]
-        //[InlineData(2019)]
+        [InlineData(2019)]
         //[InlineData(2018)]
-        [InlineData(2017)]
-        [InlineData(2016)]
+        //[InlineData(2017)]
+        //[InlineData(2016)]
+        //[InlineData(2015)]
+        //[InlineData(2014)]
+        //[InlineData(2013)]
+        //[InlineData(2012)]
+        //[InlineData(2011)]
+        //[InlineData(2010)]
         public async Task RetrieveDataFor2019_2020Season(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
@@ -24,13 +30,13 @@ namespace NbaOracle.Tests.Integration.Teams
                 var provider = c.GetInstance<ITeamProvider>();
                 var processor = c.GetInstance<ITeamProcessor>();
 
-                foreach (var (_, value) in TeamsFactory.Teams)
+                foreach (var team in TeamsFactory.GetTeamsBySeason(season))
                 {
-                    var teamData = await provider.GetTeamData(value, season);
+                    var teamData = await provider.GetTeamData(team, season);
 
-                    await processor.Process(value, season, teamData);
+                    await processor.Process(team, season, teamData);
 
-                    await Task.Delay(TimeSpan.FromSeconds(2));
+                    await Task.Delay(TimeSpan.FromSeconds(3));
                 }
             });
         }
