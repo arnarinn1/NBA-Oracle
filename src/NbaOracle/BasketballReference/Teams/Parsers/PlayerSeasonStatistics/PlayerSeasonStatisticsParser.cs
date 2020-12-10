@@ -23,30 +23,29 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
                 var gamesPlayed = player.GetTextContentAsInt("td[data-stat='gs']");
                 var minutesPlayed = player.GetTextContentAsInt("td[data-stat='mp']");
 
-                var fieldGoalsMade = player.GetTextContent("td[data-stat='fg']");
-                var fieldGoalsAttempted = player.GetTextContent("td[data-stat='fga']");
+                var fieldGoalsMade = player.GetTextContentAsInt("td[data-stat='fg']");
+                var fieldGoalsAttempted = player.GetTextContentAsInt("td[data-stat='fga']");
 
-                var threePointersMade = player.GetTextContent("td[data-stat='fg3']");
-                var threePointersAttempted = player.GetTextContent("td[data-stat='fg3a']");
+                var threePointersMade = player.GetTextContentAsInt("td[data-stat='fg3']");
+                var threePointersAttempted = player.GetTextContentAsInt("td[data-stat='fg3a']");
 
-                var twoPointersMade = player.GetTextContent("td[data-stat='fg2']");
-                var twoPointersAttempted = player.GetTextContent("td[data-stat='fg2a']");
+                var twoPointersMade = player.GetTextContentAsInt("td[data-stat='fg2']");
+                var twoPointersAttempted = player.GetTextContentAsInt("td[data-stat='fg2a']");
 
                 var effectiveFieldGoalPercentage = player.GetTextContent("td[data-stat='efg_pct']");
 
-                var freeThrowsMade = player.GetTextContent("td[data-stat='ft']");
-                var freeThrowsAttempted = player.GetTextContent("td[data-stat='fta']");
+                var freeThrowsMade = player.GetTextContentAsInt("td[data-stat='ft']");
+                var freeThrowsAttempted = player.GetTextContentAsInt("td[data-stat='fta']");
 
-                var offensiveRebounds = player.GetTextContent("td[data-stat='orb']");
-                var defensiveRebounds = player.GetTextContent("td[data-stat='drb']");
+                var offensiveRebounds = player.GetTextContentAsInt("td[data-stat='orb']");
+                var defensiveRebounds = player.GetTextContentAsInt("td[data-stat='drb']");
 
-                var assists = player.GetTextContent("td[data-stat='ast']");
-                var steals = player.GetTextContent("td[data-stat='stl']");
-                var blocks = player.GetTextContent("td[data-stat='blk']");
-                var turnovers = player.GetTextContent("td[data-stat='tov']");
-                var personalFouls = player.GetTextContent("td[data-stat='pf']");
-
-                var points = player.GetTextContent("td[data-stat='pts']");
+                var assists = player.GetTextContentAsInt("td[data-stat='ast']");
+                var steals = player.GetTextContentAsInt("td[data-stat='stl']");
+                var blocks = player.GetTextContentAsInt("td[data-stat='blk']");
+                var turnovers = player.GetTextContentAsInt("td[data-stat='tov']");
+                var personalFouls = player.GetTextContentAsInt("td[data-stat='pf']");
+                var points = player.GetTextContentAsInt("td[data-stat='pts']");
 
                 output.Add(new PlayerSeasonStatisticsData(playerName, gamesPlayed, minutesPlayed, fieldGoalsMade, fieldGoalsAttempted, threePointersMade, threePointersAttempted, twoPointersMade, twoPointersAttempted, effectiveFieldGoalPercentage, freeThrowsMade, freeThrowsAttempted, offensiveRebounds, defensiveRebounds, assists, steals, blocks, turnovers, personalFouls, points));
             }
