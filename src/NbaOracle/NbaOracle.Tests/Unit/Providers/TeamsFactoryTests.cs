@@ -10,7 +10,7 @@ namespace NbaOracle.Tests.Unit.Providers
         [Fact]
         public void ThereShouldBe30Teams()
         {
-            var seasons = new int[] { 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 };
+            var seasons = new[] { 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 };
             
             foreach (var season in seasons)
                 TeamsFactory.GetTeamsBySeason(new Season(season)).Count.Should().Be(30);

@@ -11,7 +11,6 @@ namespace NbaOracle.Providers
             {
                 new Team("Atlanta Hawks", "ATL"),
                 new Team("Boston Celtics", "BOS"),
-                
                 new Team("Chicago Bulls", "CHI"),
                 new Team("Cleveland Cavaliers", "CLE"),
                 new Team("Dallas Mavericks", "DAL"),
@@ -36,12 +35,17 @@ namespace NbaOracle.Providers
                 new Team("San Antonio Spurs", "SAS"),
                 new Team("Toronto Raptors", "TOR"),
                 new Team("Utah Jazz", "UTA"),
-                new Team("Washington Wizards", "WAS")
+                new Team("Washington Wizards", "WAS"),
+                season.SeasonStartYear <= 2013
+                    ? new Team("Charlotte Bobcats", "CHA")
+                    : new Team("Charlotte Hornets", "CHO"),
+                season.SeasonStartYear <= 2012
+                    ? new Team("New Orleans Hornets", "NOH")
+                    : new Team("New Orleans Pelicans", "NOP"),
+                season.SeasonStartYear <= 2011 
+                    ? new Team("New Jersey Nets", "NJN") 
+                    : new Team("Brooklyn Nets", "BRK"),
             };
-
-            teams.Add(season.SeasonStartYear <= 2013 ? new Team("Charlotte Bobcats", "CHA") : new Team("Charlotte Hornets", "CHO"));
-            teams.Add(season.SeasonStartYear <= 2012 ? new Team("New Orleans Hornets", "NOH") : new Team("New Orleans Pelicans", "NOP"));
-            teams.Add(season.SeasonStartYear <= 2011 ? new Team("New Jersey Nets", "NJN") : new Team("Brooklyn Nets", "BRK"));
 
             return teams;
         }
