@@ -9,12 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\BuildingBlocks\BuildingBlocks.csproj" />
+    <Folder Include="BasketballReference\GameDetails\Processors\" />
+    <Folder Include="BasketballReference\GameDetails\Parsers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BasketballReference\GameDetails\Processors\" />
-    <Folder Include="BasketballReference\GameDetails\Parsers\" />
+    <ProjectReference Include="..\..\Shared\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>
