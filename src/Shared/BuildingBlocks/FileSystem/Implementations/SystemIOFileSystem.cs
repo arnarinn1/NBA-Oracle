@@ -32,6 +32,11 @@ namespace BuildingBlocks.FileSystem.Implementations
                 : System.IO.File.WriteAllTextAsync(filePath, _serializer.Serialize(content));
         }
 
+        public Task OverwriteFile<T>(string filePath, T data)
+        {
+            return System.IO.File.WriteAllTextAsync(filePath, _serializer.Serialize(data));
+        }
+
         public async Task<FileContent> LoadFileContent(string filePath)
         {
             var content = await System.IO.File.ReadAllTextAsync(filePath);

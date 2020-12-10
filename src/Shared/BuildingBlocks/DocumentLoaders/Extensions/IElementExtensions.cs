@@ -61,7 +61,8 @@ namespace BuildingBlocks.DocumentLoaders.Extensions
 
         private static T ParseTextContent<T>(this IElement element, string querySelector, Func<string, T> parseFunction)
         {
-            return parseFunction(element.GetTextContent(querySelector));
+            var value = element.GetTextContent(querySelector);
+            return string.IsNullOrWhiteSpace(value) ? default : parseFunction(value);
         }
     }
 }

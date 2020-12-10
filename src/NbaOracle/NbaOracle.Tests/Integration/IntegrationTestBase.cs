@@ -12,6 +12,7 @@ using BuildingBlocks.Serialization.Implementation;
 using Microsoft.Extensions.Configuration;
 using NbaOracle.Providers;
 using NbaOracle.Providers.BasketballReference.Teams;
+using NbaOracle.Providers.BasketballReference.Teams.Processors;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
 
@@ -54,6 +55,9 @@ namespace NbaOracle.Tests.Integration
 
             _container.RegisterInstance(new TeamProviderSettings(configuration["BasketballReferenceBaseUrl"], configuration["BaseDirectoryPath"]));
             _container.Register<ITeamProvider, TeamProvider>();
+
+            _container.RegisterInstance(new TeamProcessorFileSystemSettings(configuration["BaseDirectoryPath"]));
+            _container.Register<ITeamProcessor, WriteTeamDataToFileSystemProcessor>();
         }
 
 

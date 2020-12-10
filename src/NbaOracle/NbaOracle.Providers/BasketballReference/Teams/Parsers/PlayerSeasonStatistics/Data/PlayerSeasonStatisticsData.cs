@@ -100,7 +100,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayerSeasonStat
             Points = points;
             PointsPerGame = Divide(points, gamesPlayed, 1);
 
-            static double Divide(int left, int right, int decimals = 3) => Math.Round((double)left / right, decimals);
+            static double Divide(int left, int right, int decimals = 3) => right == 0 ? 0 : Math.Round((double)left / right, decimals);
         }
 
         public override string ToString()

@@ -18,6 +18,8 @@ namespace ValueObjects
             NameIdentifier = nameIdentifier.ToUpper();
         }
 
+        public override string ToString() => NameIdentifier;
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return NameIdentifier;
