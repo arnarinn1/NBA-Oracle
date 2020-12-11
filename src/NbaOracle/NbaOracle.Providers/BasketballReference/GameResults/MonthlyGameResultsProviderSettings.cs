@@ -8,7 +8,7 @@ namespace NbaOracle.Providers.BasketballReference.GameResults
         public MonthlyGameResultsProviderSettings(string baseUrl, string directoryPath)
         {
             BaseUrl = $"{baseUrl}/leagues";
-            DirectoryPath = $"{directoryPath}/html/schedule";
+            DirectoryPath = $"{directoryPath}/html/game-results";
         }
 
         public string BaseUrl { get; }

@@ -40,6 +40,9 @@ namespace NbaOracle.Tests.Integration
                 .AddJsonFile("appsettingsTest.json", optional: false, reloadOnChange: false)
                 .Build();
 
+            var baseDirectoryPath = configuration["BaseDirectoryPath"];
+            var basketballReferenceBaseUrl = configuration["BasketballReferenceBaseUrl"];
+
             _container.RegisterSingleton<ISerializer, NativeJsonSerializer>();
             _container.RegisterSingleton<IFileSystem, SystemIOFileSystem>();
 
@@ -55,16 +58,17 @@ namespace NbaOracle.Tests.Integration
 
             _container.Register(typeof(IDocumentParser<>), typeof(IProvidersAssemblyMarker).Assembly);
 
-            _container.RegisterInstance(new TeamProviderSettings(configuration["BasketballReferenceBaseUrl"], configuration["BaseDirectoryPath"]));
+            _container.RegisterInstance(new TeamProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<ITeamProvider, TeamProvider>();
 
-            _container.RegisterInstance(new TeamProcessorFileSystemSettings(configuration["BaseDirectoryPath"]));
+            _container.RegisterInstance(new TeamProcessorFileSystemSettings(baseDirectoryPath));
             _container.Register<ITeamProcessor, WriteTeamDataToFileSystemProcessor>();
 
-            _container.RegisterInstance(new MonthlyGameResultsProviderSettings(configuration["BasketballReferenceBaseUrl"], configuration["BaseDirectoryPath"]));
+            _container.RegisterInstance(new MonthlyGameResultsProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<IMonthlyGameResultsProvider, MonthlyGameResultsProvider>();
 
-            _container.Register<ISeasonGameResultsProcessor, SeasonGameResultsProcessor>();
+            _container.RegisterInstance(new SeasonGameResultsProcessorSettings(baseDirectoryPath));
+            _container.Register<ISeasonGameResultsProcessor, WriteSeasonGameResultsToFileSystemProcessor>();
         }
 
         protected async Task ExecuteTest(Func<Container, Task> test)
