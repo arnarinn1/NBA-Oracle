@@ -13,6 +13,15 @@ namespace NbaOracle.Tests.Integration.GameResults
     {
         [Theory]
         [InlineData(2019)]
+        [InlineData(2018)]
+        [InlineData(2017)]
+        [InlineData(2016)]
+        [InlineData(2015)]
+        [InlineData(2014)]
+        [InlineData(2013)]
+        [InlineData(2012)]
+        [InlineData(2011)]
+        [InlineData(2010)]
         public async Task ProcessData(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
@@ -30,7 +39,7 @@ namespace NbaOracle.Tests.Integration.GameResults
 
                     seasonGameResults.AddRange(monthGameResults.GameResults);
 
-                    //await Task.Delay(TimeSpan.FromSeconds(2));
+                    await Task.Delay(TimeSpan.FromSeconds(2));
                 }
 
                 await processor.Process(season, seasonGameResults);
