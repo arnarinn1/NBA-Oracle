@@ -1,15 +1,16 @@
 ﻿using BuildingBlocks.DocumentLoaders;
 using ValueObjects;
+
 // ReSharper disable PossibleInvalidOperationException
 
-namespace NbaOracle.Providers.BasketballReference.GameSchedules
+namespace NbaOracle.Providers.BasketballReference.GameResults
 {
-    public class MonthlyGameSchedulesProviderSettings
+    public class MonthlyGameResultsProviderSettings
     {
-        public MonthlyGameSchedulesProviderSettings(string baseUrl, string directoryPath)
+        public MonthlyGameResultsProviderSettings(string baseUrl, string directoryPath)
         {
-            BaseUrl = baseUrl;
-            DirectoryPath = directoryPath;
+            BaseUrl = $"{baseUrl}/leagues";
+            DirectoryPath = $"{directoryPath}/html/schedule";
         }
 
         public string BaseUrl { get; }

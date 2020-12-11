@@ -21,7 +21,7 @@ namespace NbaOracle.Tests.Integration.Teams
         [InlineData(2012)]
         [InlineData(2011)]
         [InlineData(2010)]
-        public async Task RetrieveDataFor2019_2020Season(int seasonStartYear)
+        public async Task ProcessData(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
 

@@ -51,7 +51,7 @@ namespace BuildingBlocks.DocumentLoaders.Extensions
         {
             var value = element.GetTextContent(querySelector);
             value = value.Replace(",", "");
-            return ParsingMethods.ToInt(value);
+            return string.IsNullOrWhiteSpace(value) ? default : ParsingMethods.ToInt(value);
         }
 
         public static DateTime ToDate(this IElement element, string querySelector)

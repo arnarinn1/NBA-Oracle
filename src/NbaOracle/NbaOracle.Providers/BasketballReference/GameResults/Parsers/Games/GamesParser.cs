@@ -1,17 +1,18 @@
-﻿using AngleSharp.Dom;
+﻿using System.Collections.Generic;
+using AngleSharp.Dom;
 using BuildingBlocks.DocumentLoaders.Extensions;
 using BuildingBlocks.Parsers;
-using NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSchedule.Data;
+using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
 
-namespace NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSchedule
+namespace NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games
 {
-    public class MonthScheduleParser : IDocumentParser<MonthScheduleData>
+    public class GamesParser : IDocumentParser<IEnumerable<GameData>>
     {
-        public MonthScheduleData Parse(IDocument document)
+        public IEnumerable<GameData> Parse(IDocument document)
         {
-            var output = new MonthScheduleData();
+            var output = new List<GameData>();
 
-            var games = document.QuerySelectorAll("div[id='all_schedule'] tbody tr");
+            var games = document.QuerySelectorAll("div[id='all_schedule'] tbody tr:not(.thead)");
 
             foreach (var game in games)
             {
@@ -28,7 +29,7 @@ namespace NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSch
                 var overtimes = game.GetTextContent("td[data-stat='overtimes']");
                 var attendance = game.GetTextContentAsIntAndRemoveSpecialCharacters("td[data-stat='attendance']");
 
-                output.AddGameResult(new GameResult(gameDate, visitorTeam, homeTeam, visitorPoints, homePoints, boxScoreLink, overtimes, attendance));
+                output.Add(new GameData(gameDate, visitorTeam, homeTeam, visitorPoints, homePoints, boxScoreLink, overtimes, attendance));
             }
 
             return output;

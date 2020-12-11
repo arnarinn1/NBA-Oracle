@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Unit\Providers\GameSchedules\Parsers\MonthSchedule\month_schedule_example_html_data.txt" />
+    <None Remove="Unit\Providers\GameResults\Parsers\Games\month_schedule_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\TeamMisc\team_misc_example_html_data.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Unit\Providers\GameSchedules\Parsers\MonthSchedule\month_schedule_example_html_data.txt" />
+    <EmbeddedResource Include="Unit\Providers\GameResults\Parsers\Games\month_schedule_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\TeamMisc\team_misc_example_html_data.txt" />

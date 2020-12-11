@@ -5,7 +5,7 @@ namespace NbaOracle.Providers
 {
     public class SeasonFactory
     {
-        public IReadOnlyList<Month> GetMonthsInSeason(Season season)
+        public static IReadOnlyList<Month> GetMonthsInSeason(Season season)
         {
             if (season == new Season(2019))
                 return new List<Month> {Month.October(), Month.November(), Month.December(), Month.January(), Month.February(), Month.March(), Month.July(), Month.August(), Month.September(), Month.October()};

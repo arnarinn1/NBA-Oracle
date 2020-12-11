@@ -1,11 +1,11 @@
 ﻿using System;
 using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSchedule.Data
+namespace NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data
 {
-    public class GameResult
+    public class GameData
     {
-        public GameResult(DateTime gameDate, string visitorTeam, string homeTeam, int visitorPoints, int homePoints, string boxScoreLink, string overtimes, int attendance)
+        public GameData(DateTime gameDate, string visitorTeam, string homeTeam, int visitorPoints, int homePoints, string boxScoreLink, string overtimes, int attendance)
         {
             GameDate = gameDate;
             VisitorTeam = visitorTeam;
@@ -16,6 +16,7 @@ namespace NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSch
             BoxScoreLink = boxScoreLink;
             NumberOfOvertimes = new Overtime(overtimes).Count;
             Attendance = attendance;
+            IsPlayoffGame = new IsPlayoffGame(gameDate);
         }
 
         public DateTime GameDate { get; }
@@ -31,6 +32,8 @@ namespace NbaOracle.Providers.BasketballReference.GameSchedules.Parsers.MonthSch
 
         public int? NumberOfOvertimes { get; }
         public int Attendance { get; }
+
+        public bool IsPlayoffGame { get; }
 
         public override string ToString()
         {
