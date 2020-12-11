@@ -7,7 +7,8 @@ namespace ValueObjects
 {
     public class Month : ValueObject
     {
-        public string Value { get; }
+        public string Name { get; }
+        public int Year { get; }
 
         private static readonly IReadOnlyList<string> Months =
             new[]
@@ -26,39 +27,45 @@ namespace ValueObjects
                 "December"
             };
 
-        public Month(string value)
+        public Month(string name, int year)
         {
-            _ = value.DiscardNullOrWhitespaceCheck() ?? throw new ArgumentNullException(nameof(value));
+            _ = name.DiscardNullOrWhitespaceCheck() ?? throw new ArgumentNullException(nameof(name));
 
-            value = value.Trim();
+            name = name.Trim();
 
-            if (!Months.Contains(value))
-                throw new ArgumentOutOfRangeException(nameof(value), $"Value '{value}' is not a valid month");
+            if (!Months.Contains(name))
+                throw new ArgumentOutOfRangeException(nameof(name), $"Name '{name}' is not a valid month");
 
-            Value = value;
+            Name = name;
+            Year = year;
         }
 
         public string ToLower()
         {
-            return Value.ToLower();
+            return Name.ToLower();
         }
 
-        public static Month January() => new Month("January");
-        public static Month February() => new Month("February");
-        public static Month March() => new Month("March");
-        public static Month April() => new Month("April");
-        public static Month May() => new Month("May");
-        public static Month June() => new Month("June");
-        public static Month July() => new Month("July");
-        public static Month August() => new Month("August");
-        public static Month September() => new Month("September");
-        public static Month October() => new Month("October");
-        public static Month November() => new Month("November");
-        public static Month December() => new Month("December");
+        public bool IsOctoberDuringEither2019Or2020()
+        {
+            return Name == "October" && (Year == 2019 || Year == 2020);
+        }
+        
+        public static Month January(int year) => new Month("January", year);
+        public static Month February(int year) => new Month("February", year);
+        public static Month March(int year) => new Month("March", year);
+        public static Month April(int year) => new Month("April", year);
+        public static Month May(int year) => new Month("May", year);
+        public static Month June(int year) => new Month("June", year);
+        public static Month July(int year) => new Month("July", year);
+        public static Month August(int year) => new Month("August", year);
+        public static Month September(int year) => new Month("September", year);
+        public static Month October(int year) => new Month("October", year);
+        public static Month November(int year) => new Month("November", year);
+        public static Month December(int year) => new Month("December", year);
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Value;
+            yield return Name;
         }
     }
 }

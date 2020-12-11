@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ValueObjects
 {
@@ -8,20 +7,52 @@ namespace ValueObjects
         public int SeasonStartYear { get; }
         public int SeasonEndYear { get; }
 
-        public int? CurrentYear { get; }
-
-        public Season(int seasonStartYear, int? currentYear = null)
+        public Season(int seasonStartYear)
         {
             SeasonStartYear = seasonStartYear;
             SeasonEndYear = seasonStartYear + 1;
+        }
 
-            if (currentYear == null)
-                return;
-
-            if (currentYear != SeasonStartYear && currentYear != SeasonEndYear)
-                throw new ArgumentException("CurrentYear doesn't match season years");
-
-            CurrentYear = currentYear;
+        public IReadOnlyList<Month> GetMonthsInSeason()
+        {
+            return SeasonStartYear switch
+            {
+                2019 => new List<Month>
+                {
+                    Month.October(SeasonStartYear),
+                    Month.November(SeasonStartYear),
+                    Month.December(SeasonStartYear),
+                    Month.January(SeasonEndYear),
+                    Month.February(SeasonEndYear),
+                    Month.March(SeasonEndYear),
+                    Month.July(SeasonEndYear),
+                    Month.August(SeasonEndYear),
+                    Month.September(SeasonEndYear),
+                    Month.October(SeasonEndYear)
+                },
+                2011 => new List<Month>
+                {
+                    Month.December(SeasonStartYear),
+                    Month.January(SeasonEndYear),
+                    Month.February(SeasonEndYear),
+                    Month.March(SeasonEndYear),
+                    Month.April(SeasonEndYear),
+                    Month.May(SeasonEndYear),
+                    Month.June(SeasonEndYear)
+                },
+                _ => new List<Month>
+                {
+                    Month.October(SeasonStartYear),
+                    Month.November(SeasonStartYear),
+                    Month.December(SeasonStartYear),
+                    Month.January(SeasonEndYear),
+                    Month.February(SeasonEndYear),
+                    Month.March(SeasonEndYear),
+                    Month.April(SeasonEndYear),
+                    Month.May(SeasonEndYear),
+                    Month.June(SeasonEndYear)
+                }
+            };
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

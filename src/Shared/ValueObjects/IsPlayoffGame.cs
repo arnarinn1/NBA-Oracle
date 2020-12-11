@@ -21,7 +21,9 @@ namespace ValueObjects
             switch (gameDate.Year)
             {
                 case 2020:
-                    return gameDate >= new DateTime(2020,08, 17);
+                    return gameDate >= new DateTime(2020,08, 17) && gameDate <= new DateTime(2020, 10, 11);
+                case 2019:
+                    return gameDate >= new DateTime(2019, 4, 13) && gameDate <= new DateTime(2019, 6, 13);
                 default:
                     throw new ArgumentException($"Playoff starting date is not known for year = {gameDate.Year}");
             }

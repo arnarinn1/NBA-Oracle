@@ -9,7 +9,7 @@ namespace NbaOracle.Providers.BasketballReference.GameResults.Processors
     {
         public Task Process(Season season, IEnumerable<GameData> games)
         {
-            throw new System.NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using BuildingBlocks.DocumentLoaders;
 using ValueObjects;
 
-// ReSharper disable PossibleInvalidOperationException
-
 namespace NbaOracle.Providers.BasketballReference.GameResults
 {
     public class MonthlyGameResultsProviderSettings
@@ -18,22 +16,13 @@ namespace NbaOracle.Providers.BasketballReference.GameResults
 
         public DocumentOptions ToDocumentOptions(Season season, Month month)
         {
-            if (season == new Season(2019) && month == Month.October())
-                return WhenItsOctoberAnd2020Season(season, month);
-
-            var url = $"{BaseUrl}/NBA_{season.SeasonEndYear}_games-{month.ToLower()}.html";
-            var directoryPath = $"{DirectoryPath}/{season.SeasonStartYear}-{season.SeasonEndYear}";
-            var filePath = $"{directoryPath}/{month.ToLower()}.json";
-
-            return new DocumentOptions(url, directoryPath, filePath);
-        }
-
-        private DocumentOptions WhenItsOctoberAnd2020Season(Season season, Month month)
-        {
-            var url = $"{BaseUrl}/NBA_{season.SeasonEndYear}_games-{month.ToLower()}-{season.SeasonStartYear}.html";
-            var directoryPath = $"{DirectoryPath}/{season.SeasonStartYear}-{season.SeasonEndYear}";
-            var filePath = $"{directoryPath}/{month.ToLower()}-{season.CurrentYear.Value}.json";
+            var url = month.IsOctoberDuringEither2019Or2020()
+                ? $"{BaseUrl}/NBA_{season.SeasonEndYear}_games-{month.ToLower()}-{month.Year}.html"
+                : $"{BaseUrl}/NBA_{season.SeasonEndYear}_games-{month.ToLower()}.html";
             
+            var directoryPath = $"{DirectoryPath}/{season.SeasonStartYear}-{season.SeasonEndYear}";
+            var filePath = $"{directoryPath}/{month.Year}-{month.ToLower()}.json";
+
             return new DocumentOptions(url, directoryPath, filePath);
         }
     }

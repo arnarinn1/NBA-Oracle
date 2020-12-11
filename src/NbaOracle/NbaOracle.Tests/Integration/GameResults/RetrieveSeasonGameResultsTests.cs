@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using NbaOracle.Providers;
 using NbaOracle.Providers.BasketballReference.GameResults;
 using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
 using NbaOracle.Providers.BasketballReference.GameResults.Processors;
@@ -15,7 +15,7 @@ namespace NbaOracle.Tests.Integration.GameResults
         [InlineData(2019)]
         public async Task ProcessData(int seasonStartYear)
         {
-            var season = new Season(seasonStartYear, seasonStartYear == 2019 ? 2019 : null as int?);
+            var season = new Season(seasonStartYear);
 
             await ExecuteTest(async c =>
             {
@@ -24,18 +24,16 @@ namespace NbaOracle.Tests.Integration.GameResults
 
                 var seasonGameResults = new List<GameData>();
 
-                foreach (var month in SeasonFactory.GetMonthsInSeason(season))
+                foreach (var month in season.GetMonthsInSeason())
                 {
-                    if (season == new Season(2019) && month == Month.January()) //todo - fubbgly fix this
-                        season = new Season(2019, 2020); 
-
                     var monthGameResults = await provider.GetSchedule(season, month);
 
-                    //gameResults.AddRange();
+                    seasonGameResults.AddRange(monthGameResults.GameResults);
 
                     //await Task.Delay(TimeSpan.FromSeconds(2));
                 }
 
+                await processor.Process(season, seasonGameResults);
             });
         }
     }
