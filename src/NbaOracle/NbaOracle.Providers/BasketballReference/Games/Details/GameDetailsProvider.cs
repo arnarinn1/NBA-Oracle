@@ -20,7 +20,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details
             _gameDetailsParser = new GameDetailsParser();
         }
 
-        public async Task<GameDetailsData> GetGameDetails(Season season, string boxScoreLink) //todo - boxscorelink to valueobject
+        public async Task<GameDetailsData> GetGameDetails(Season season, BoxScoreLink boxScoreLink)
         {
             var document = await _documentLoader.LoadDocument(_settings.ToDocumentOptions(season, boxScoreLink));
 

@@ -5,6 +5,6 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details
 {
     public interface IGameDetailsProvider
     {
-        Task<GameDetailsData> GetGameDetails(Season season, string boxScoreLink);
+        Task<GameDetailsData> GetGameDetails(Season season, BoxScoreLink boxScoreLink);
     }
 }

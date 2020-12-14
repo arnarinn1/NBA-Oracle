@@ -11,6 +11,7 @@ using BuildingBlocks.Serialization;
 using BuildingBlocks.Serialization.Implementation;
 using Microsoft.Extensions.Configuration;
 using NbaOracle.Providers;
+using NbaOracle.Providers.BasketballReference.Games.Details;
 using NbaOracle.Providers.BasketballReference.Games.Results;
 using NbaOracle.Providers.BasketballReference.Games.Results.Processors;
 using NbaOracle.Providers.BasketballReference.Teams;
@@ -69,6 +70,9 @@ namespace NbaOracle.Tests.Integration
 
             _container.RegisterInstance(new SeasonGameResultsProcessorSettings(baseDirectoryPath));
             _container.Register<ISeasonGameResultsProcessor, WriteSeasonGameResultsToFileSystemProcessor>();
+
+            _container.RegisterInstance(new GameDetailsProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
+            _container.Register<IGameDetailsProvider, GameDetailsProvider>();
         }
 
         protected async Task ExecuteTest(Func<Container, Task> test)
