@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
+using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games.Data;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults
+namespace NbaOracle.Providers.BasketballReference.Games.Results
 {
     public class MonthlyGameResultsData
     {

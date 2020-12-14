@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BasketballReference\GameDetails\Processors\" />
-    <Folder Include="BasketballReference\GameDetails\Parsers\" />
+    <Folder Include="BasketballReference\Games\Details\Parsers\BoxScore\Data\" />
+    <Folder Include="BasketballReference\Games\Details\Processors\" />
   </ItemGroup>
 
   <ItemGroup>

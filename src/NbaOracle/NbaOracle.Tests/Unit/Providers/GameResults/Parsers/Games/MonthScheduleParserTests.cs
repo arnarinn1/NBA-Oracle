@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using AngleSharp.Dom;
 using FluentAssertions;
-using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games;
+using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games;
 using NbaOracle.Tests.Unit.Fixtures;
 using Xunit;
 

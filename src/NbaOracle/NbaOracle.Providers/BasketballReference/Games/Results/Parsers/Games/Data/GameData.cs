@@ -1,7 +1,7 @@
 ﻿using System;
 using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data
+namespace NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games.Data
 {
     public class GameData
     {

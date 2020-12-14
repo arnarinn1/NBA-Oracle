@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NbaOracle.Providers.BasketballReference.GameResults;
-using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
-using NbaOracle.Providers.BasketballReference.GameResults.Processors;
+using NbaOracle.Providers.BasketballReference.Games.Results;
+using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games.Data;
+using NbaOracle.Providers.BasketballReference.Games.Results.Processors;
 using ValueObjects;
 using Xunit;
 
-namespace NbaOracle.Tests.Integration.GameResults
+namespace NbaOracle.Tests.Integration.Games
 {
     public class RetrieveSeasonGameResultsTests : IntegrationTestBase
     {

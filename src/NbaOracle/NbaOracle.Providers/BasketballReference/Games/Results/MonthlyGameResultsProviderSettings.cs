@@ -1,7 +1,7 @@
 ﻿using BuildingBlocks.DocumentLoaders;
 using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults
+namespace NbaOracle.Providers.BasketballReference.Games.Results
 {
     public class MonthlyGameResultsProviderSettings
     {

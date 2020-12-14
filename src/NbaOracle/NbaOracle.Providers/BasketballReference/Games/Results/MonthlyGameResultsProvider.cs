@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BuildingBlocks.DocumentLoaders;
 using BuildingBlocks.Parsers;
-using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
+using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games.Data;
 using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults
+namespace NbaOracle.Providers.BasketballReference.Games.Results
 {
     public class MonthlyGameResultsProvider : IMonthlyGameResultsProvider
     {

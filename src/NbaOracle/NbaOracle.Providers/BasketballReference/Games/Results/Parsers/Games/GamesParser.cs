@@ -2,9 +2,9 @@
 using AngleSharp.Dom;
 using BuildingBlocks.DocumentLoaders.Extensions;
 using BuildingBlocks.Parsers;
-using NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games.Data;
+using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games.Data;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults.Parsers.Games
+namespace NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games
 {
     public class GamesParser : IDocumentParser<IEnumerable<GameData>>
     {

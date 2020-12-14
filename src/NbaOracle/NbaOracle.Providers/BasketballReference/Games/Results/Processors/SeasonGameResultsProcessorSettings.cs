@@ -1,6 +1,6 @@
 ﻿using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults.Processors
+namespace NbaOracle.Providers.BasketballReference.Games.Results.Processors
 {
     public class SeasonGameResultsProcessorSettings
     {

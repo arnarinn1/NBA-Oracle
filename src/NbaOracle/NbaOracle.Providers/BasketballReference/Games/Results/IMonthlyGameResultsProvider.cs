@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ValueObjects;
 
-namespace NbaOracle.Providers.BasketballReference.GameResults
+namespace NbaOracle.Providers.BasketballReference.Games.Results
 {
     public interface IMonthlyGameResultsProvider
     {
