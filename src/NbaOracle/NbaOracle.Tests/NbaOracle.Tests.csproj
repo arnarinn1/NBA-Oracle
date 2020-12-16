@@ -7,14 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Unit\Providers\GameResults\Parsers\Games\month_schedule_example_html_data.txt" />
+    <None Remove="Unit\Providers\Games\Parsers\Games\month_schedule_example_html_data.txt" />
+    <None Remove="Unit\Providers\Games\Parsers\LineScore\line_score_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
     <None Remove="Unit\Providers\Teams\Parsers\TeamMisc\team_misc_example_html_data.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Unit\Providers\GameResults\Parsers\Games\month_schedule_example_html_data.txt" />
+    <EmbeddedResource Include="Unit\Providers\Games\Parsers\Games\month_schedule_example_html_data.txt" />
+    <EmbeddedResource Include="Unit\Providers\Games\Parsers\LineScore\line_score_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\PlayerSeasonStatistics\player_statistics_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\PlayByPlay\play_by_play_example_html_data.txt" />
     <EmbeddedResource Include="Unit\Providers\Teams\Parsers\TeamMisc\team_misc_example_html_data.txt" />

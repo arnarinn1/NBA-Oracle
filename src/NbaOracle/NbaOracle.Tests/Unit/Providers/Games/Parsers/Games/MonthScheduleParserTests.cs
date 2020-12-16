@@ -5,7 +5,7 @@ using NbaOracle.Providers.BasketballReference.Games.Results.Parsers.Games;
 using NbaOracle.Tests.Unit.Fixtures;
 using Xunit;
 
-namespace NbaOracle.Tests.Unit.Providers.GameResults.Parsers.Games
+namespace NbaOracle.Tests.Unit.Providers.Games.Parsers.Games
 {
     public class MonthScheduleParserTests : IClassFixture<DocumentFixture>
     {
@@ -14,7 +14,7 @@ namespace NbaOracle.Tests.Unit.Providers.GameResults.Parsers.Games
 
         public MonthScheduleParserTests(DocumentFixture fixture)
         {
-            _document = fixture.CreateDocument("NbaOracle.Tests.Unit.Providers.GameResults.Parsers.Games.month_schedule_example_html_data.txt").GetAwaiter().GetResult();
+            _document = fixture.CreateDocument("NbaOracle.Tests.Unit.Providers.Games.Parsers.Games.month_schedule_example_html_data.txt").GetAwaiter().GetResult();
             _parser = new GamesParser();
         }
 
