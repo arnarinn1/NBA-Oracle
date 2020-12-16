@@ -58,6 +58,7 @@ namespace NbaOracle.Tests.Integration
             _container.RegisterDecorator<IDocumentLoader, LoadDocumentFromFileSystemBehavior>();
 
             _container.Register(typeof(IDocumentParser<>), typeof(IProvidersAssemblyMarker).Assembly);
+            _container.Register(typeof(IDocumentParser<,>), typeof(IProvidersAssemblyMarker).Assembly);
 
             _container.RegisterInstance(new TeamProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<ITeamProvider, TeamProvider>();
