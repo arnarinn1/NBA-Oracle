@@ -1,7 +1,83 @@
-﻿namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore.Data
+﻿using System;
+using System.Collections.Generic;
+
+namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore.Data
 {
     public class TeamBoxScoreData
     {
-        
+        public ICollection<PlayerBoxScoreData> Players { get; } = new List<PlayerBoxScoreData>();
+        public ICollection<string> DidNotPlay { get; } = new List<string>();
+
+        public string TotalMinutesPlayed { get; private set; }
+
+        public int TotalFieldGoalsMade { get; private set; }
+        public int TotalFieldGoalsAttempted { get; private set; }
+        public double TotalFieldGoalPercentage { get; private set; }
+
+        public int TotalThreePointersMade { get; private set; }
+        public int TotalThreePointersAttempted { get; private set; }
+        public double TotalThreePointersPercentage { get; private set; }
+
+        public int TotalTwoPointersMade { get; private set; }
+        public int TotalTwoPointersAttempted { get; private set; }
+        public double TotalTwoPointersPercentage { get; private set; }
+
+
+        public int TotalFreeThrowsMade { get; private set; }
+        public int TotalFreeThrowsAttempted { get; private set; }
+        public double TotalFreeThrowsPercentage { get; private set; }
+
+        public int TotalOffensiveRebounds { get; private set; }
+        public int TotalDefensiveRebounds { get; private set; }
+        public int TotalRebounds { get; private set; }
+
+        public int TotalAssists { get; private set; }
+        public int TotalSteals { get; private set; }
+        public int TotalBlocks { get; private set; }
+        public int TotalTurnovers { get; private set; }
+        public int TotalPersonalFouls { get; private set; }
+        public int TotalPoints { get; private set; }
+
+        public void AddPlayer(PlayerBoxScoreData player)
+        {
+            if (player == null)
+                throw new ArgumentNullException(nameof(player));
+
+            Players.Add(player);
+
+            //TotalMinutesPlayed += player.MinutesPlayed;
+
+            TotalFieldGoalsMade =+ player.FieldGoalsMade;
+            TotalFieldGoalsAttempted =+ player.FieldGoalsAttempted;
+            //
+
+            TotalThreePointersMade =+ player.ThreePointersMade;
+            TotalThreePointersAttempted =+ player.ThreePointersAttempted;
+            //
+
+            TotalTwoPointersMade =+ player.TwoPointersMade;
+            TotalTwoPointersAttempted =+ player.TwoPointersAttempted;
+            //
+
+            TotalFreeThrowsMade =+ player.FreeThrowsMade;
+            TotalFreeThrowsAttempted =+ player.FreeThrowsAttempted;
+            //
+
+            TotalOffensiveRebounds += player.OffensiveRebounds;
+            TotalDefensiveRebounds += player.DefensiveRebounds;
+            TotalRebounds += player.TotalRebounds;
+
+            TotalAssists += player.Assists;
+            TotalSteals += player.Steals;
+            TotalBlocks += player.Blocks;
+            TotalTurnovers += player.Turnovers;
+            TotalPersonalFouls += player.PersonalFouls;
+            TotalPoints += player.Points;
+        }
+
+        public void AddDidNotPlay(string playerName)
+        {
+            DidNotPlay.Add(playerName);
+        }
     }
 }

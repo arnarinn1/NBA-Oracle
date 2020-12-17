@@ -29,8 +29,9 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details
 
             var lineScore = _lineScoreParser.Parse(document);
             var homeBoxScore = _teamBoxScoreParser.Parse(document, lineScore.HomeTeam);
+            var visitorBoxScore = _teamBoxScoreParser.Parse(document, lineScore.VisitorTeam);
 
-            return new GameDetailsData();
+            return new GameDetailsData(lineScore, homeBoxScore, visitorBoxScore);
         }
     }
 }
