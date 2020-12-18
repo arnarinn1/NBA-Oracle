@@ -1,5 +1,4 @@
 ﻿using System;
-using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore.Data
 {
@@ -9,7 +8,6 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
         public string PlayerName { get; }
         public bool Starter { get; }
 
-        public int MinutesPlayed { get; }
         public int SecondsPlayed { get; }
 
         public int FieldGoalsMade { get; }
@@ -19,10 +17,6 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
         public int ThreePointersMade { get; }
         public int ThreePointersAttempted { get; }
         public double ThreePointersPercentage { get; }
-
-        public int TwoPointersMade { get; }
-        public int TwoPointersAttempted { get; }
-        public double TwoPointersPercentage { get; }
 
         public int FreeThrowsMade { get; }
         public int FreeThrowsAttempted { get; }
@@ -40,14 +34,12 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
         public int Points { get; }
         public int PlusMinusScore { get; }
 
-        public PlayerBoxScoreData(string playerName, bool starter, string minutesPlayed, int fieldGoalsMade, int fieldGoalsAttempted, int threePointersMade, int threePointersAttempted, int twoPointersMade, int twoPointersAttempted, int freeThrowsMade, int freeThrowsAttempted, int offensiveRebounds, int defensiveRebounds, int assists, int steals, int blocks, int turnovers, int personalFouls, int points, int plusMinusScore)
+        public PlayerBoxScoreData(string playerName, bool starter, int secondsPlayed, int fieldGoalsMade, int fieldGoalsAttempted, int threePointersMade, int threePointersAttempted, int freeThrowsMade, int freeThrowsAttempted, int offensiveRebounds, int defensiveRebounds, int assists, int steals, int blocks, int turnovers, int personalFouls, int points, int plusMinusScore)
         {
             PlayerName = playerName;
             Starter = starter;
 
-            var minutesPlayedInGame = new MinutesPlayedInGame(minutesPlayed);
-            MinutesPlayed = minutesPlayedInGame.Minutes;
-            SecondsPlayed = minutesPlayedInGame.Seconds;
+            SecondsPlayed += secondsPlayed;
 
             FieldGoalsMade = fieldGoalsMade;
             FieldGoalsAttempted = fieldGoalsAttempted;
@@ -56,10 +48,6 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
             ThreePointersMade = threePointersMade;
             ThreePointersAttempted = threePointersAttempted;
             ThreePointersPercentage = Divide(threePointersMade, threePointersAttempted);
-
-            TwoPointersMade = twoPointersMade;
-            TwoPointersAttempted = twoPointersAttempted;
-            TwoPointersPercentage = Divide(twoPointersMade, twoPointersAttempted);
 
             FreeThrowsMade = freeThrowsMade;
             FreeThrowsAttempted = freeThrowsAttempted;

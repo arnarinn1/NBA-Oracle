@@ -3,6 +3,7 @@ using AngleSharp.Dom;
 using BuildingBlocks.DocumentLoaders.Extensions;
 using BuildingBlocks.Parsers;
 using NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore.Data;
+using ValueObjects;
 
 namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore
 {
@@ -30,16 +31,13 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
                     continue;
                 }
 
-                var minutesPlayed = player.GetTextContent("td[data-stat='mp']");
+                var minutesPlayed = new MinutesPlayedInGame(player.GetTextContent("td[data-stat='mp']"));
 
                 var fieldGoalsMade = player.GetTextContentAsInt("td[data-stat='fg']");
                 var fieldGoalsAttempted = player.GetTextContentAsInt("td[data-stat='fga']");
 
                 var threePointersMade = player.GetTextContentAsInt("td[data-stat='fg3']");
                 var threePointersAttempted = player.GetTextContentAsInt("td[data-stat='fg3a']");
-
-                var twoPointersMade = player.GetTextContentAsInt("td[data-stat='fg2']");
-                var twoPointersAttempted = player.GetTextContentAsInt("td[data-stat='fg2a']");
 
                 var freeThrowsMade = player.GetTextContentAsInt("td[data-stat='ft']");
                 var freeThrowsAttempted = player.GetTextContentAsInt("td[data-stat='fta']");
@@ -56,7 +54,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
 
                 var plusMinusScore = player.GetTextContentAsInt("td[data-stat='plus_minus']");
 
-                output.AddPlayer(new PlayerBoxScoreData(playerName, starter, minutesPlayed, fieldGoalsMade, fieldGoalsAttempted, threePointersMade, threePointersAttempted, twoPointersMade, twoPointersAttempted, freeThrowsMade, freeThrowsAttempted, offensiveRebounds, defensiveRebounds, assists, steals, blocks, turnovers, personalFouls, points, plusMinusScore));
+                output.AddPlayer(new PlayerBoxScoreData(playerName, starter, minutesPlayed.TotalSecondsPlayed(), fieldGoalsMade, fieldGoalsAttempted, threePointersMade, threePointersAttempted, freeThrowsMade, freeThrowsAttempted, offensiveRebounds, defensiveRebounds, assists, steals, blocks, turnovers, personalFouls, points, plusMinusScore));
             }
 
             return output;
