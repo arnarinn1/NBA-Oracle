@@ -6,6 +6,15 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
 {
     public class TeamBoxScoreData
     {
+        public TeamBoxScoreData(int currentNumberOfWins, int currentNumberOfLosses)
+        {
+            CurrentNumberOfWins = currentNumberOfWins;
+            CurrentNumberOfLosses = currentNumberOfLosses;
+        }
+
+        public int CurrentNumberOfWins { get; }
+        public int CurrentNumberOfLosses { get; }
+
         public ICollection<PlayerBoxScoreData> Players { get; } = new List<PlayerBoxScoreData>();
         public ICollection<string> DidNotPlay { get; } = new List<string>();
 

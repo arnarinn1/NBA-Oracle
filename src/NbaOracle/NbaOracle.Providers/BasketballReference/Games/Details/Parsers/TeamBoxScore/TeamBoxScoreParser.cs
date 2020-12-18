@@ -13,9 +13,13 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
         {
             var element = document.QuerySelector($"div#all_box-{team}-game-basic div#all_box-{team}-game-basic");
 
+            var teamNameStandingText = element.GetAttributeFromElement($"span#box-{team}-game-basic_link", "data-label");
+
+            var teamNameAndStandings = new TeamNameAndStandings(teamNameStandingText);
+
             var players = element.QuerySelectorAll("tbody tr:not(.thead)");
 
-            var output = new TeamBoxScoreData();
+            var output = new TeamBoxScoreData(teamNameAndStandings.Wins, teamNameAndStandings.Losses);
 
             var i = 0;
 
