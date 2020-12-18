@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BasketballReference\Games\Details\Processors\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Shared\BuildingBlocks\BuildingBlocks.csproj" />
   </ItemGroup>
 

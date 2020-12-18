@@ -7,6 +7,7 @@ namespace ValueObjects
     public class BoxScoreLink : ValueObject
     {
         public string GameId { get; }
+        public DateTime GameDate { get; }
 
         public BoxScoreLink(string value)
         {
@@ -20,6 +21,7 @@ namespace ValueObjects
                 throw new ArgumentException("BoxScoreLink is not formatted correctly. Missing '/boxscores/' at the start of the string");
 
             GameId = value.Substring(11, value.Length - 11);
+            GameDate = ParsingMethods.ToDate(GameId.Substring(0, 8), "yyyyMMdd");
         }
 
         public string ToHtmlLink() => $"boxscores/{GameId}.html";
