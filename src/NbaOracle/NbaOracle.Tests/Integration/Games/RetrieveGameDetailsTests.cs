@@ -14,6 +14,7 @@ namespace NbaOracle.Tests.Integration.Games
     {
         [Theory]
         [InlineData(2019)]
+        //[InlineData(2018)]
         public async Task Provider(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
@@ -36,12 +37,12 @@ namespace NbaOracle.Tests.Integration.Games
                 var provider = c.GetInstance<IGameDetailsProvider>();
                 var processor = c.GetInstance<IGameDetailsProcessor>();
 
-                foreach (var boxScoreLink in boxScoreLinks.Where(x => x.GameDate >= new DateTime(2019, 12, 06)))
+                foreach (var boxScoreLink in boxScoreLinks)
                 {
                     var result = await provider.GetGameDetails(season, boxScoreLink);
 
                     await processor.Process(season, result);
-
+                    
                     await Task.Delay(TimeSpan.FromSeconds(1));
                 }
             });

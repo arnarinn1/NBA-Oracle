@@ -73,10 +73,10 @@ namespace NbaOracle.Tests.Integration
             _container.RegisterInstance(new SeasonGameResultsProcessorSettings(baseDirectoryPath));
             _container.Register<ISeasonGameResultsProcessor, WriteSeasonGameResultsToFileSystemProcessor>();
 
-            _container.RegisterInstance(new GameDetailsProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
+            _container.RegisterInstance(new GameDetailsConfigSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<IGameDetailsProvider, GameDetailsProvider>();
+            _container.RegisterDecorator<IGameDetailsProvider, LoadGameDetailsFromFileSystemBehavior>();
 
-            _container.RegisterInstance(new GameDetailsProcessorSettings(baseDirectoryPath));
             _container.Register<IGameDetailsProcessor, WriteGameDetailsToFileSystemProcessor>();
         }
 

@@ -11,11 +11,11 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details
     public class GameDetailsProvider : IGameDetailsProvider
     {
         private readonly IDocumentLoader _documentLoader;
-        private readonly GameDetailsProviderSettings _settings;
+        private readonly GameDetailsConfigSettings _settings;
         private readonly IDocumentParser<LineScoreData> _lineScoreParser;
         private readonly IDocumentParser<TeamBoxScoreData, string> _teamBoxScoreParser;
 
-        public GameDetailsProvider(IDocumentLoader documentLoader, GameDetailsProviderSettings settings, IDocumentParser<LineScoreData> lineScoreParser, IDocumentParser<TeamBoxScoreData, string> teamBoxScoreParser)
+        public GameDetailsProvider(IDocumentLoader documentLoader, GameDetailsConfigSettings settings, IDocumentParser<LineScoreData> lineScoreParser, IDocumentParser<TeamBoxScoreData, string> teamBoxScoreParser)
         {
             _documentLoader = documentLoader ?? throw new ArgumentNullException(nameof(documentLoader));
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));

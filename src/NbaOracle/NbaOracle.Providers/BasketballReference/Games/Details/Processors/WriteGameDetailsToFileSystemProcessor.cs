@@ -8,9 +8,9 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Processors
     public class WriteGameDetailsToFileSystemProcessor : IGameDetailsProcessor
     {
         private readonly IFileSystem _fileSystem;
-        private readonly GameDetailsProcessorSettings _settings;
+        private readonly GameDetailsConfigSettings _settings;
 
-        public WriteGameDetailsToFileSystemProcessor(IFileSystem fileSystem, GameDetailsProcessorSettings settings)
+        public WriteGameDetailsToFileSystemProcessor(IFileSystem fileSystem, GameDetailsConfigSettings settings)
         {
             _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));

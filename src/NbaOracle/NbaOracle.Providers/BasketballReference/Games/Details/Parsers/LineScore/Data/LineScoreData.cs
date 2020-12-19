@@ -6,7 +6,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.LineScor
 {
     public class LineScoreData
     {
-        public LineScoreData(string homeTeam, string visitorTeam, in int home1QuarterScore, in int home2QuarterScore, in int home3QuarterScore, in int home4QuarterScore, IEnumerable<OvertimeScoreData> homeOvertimeScores, in int visitor1QuarterScore, in int visitor2QuarterScore, in int visitor3QuarterScore, in int visitor4QuarterScore, IEnumerable<OvertimeScoreData> visitorOvertimeScores)
+        public LineScoreData(string homeTeam, string visitorTeam, int home1QuarterScore, int home2QuarterScore, int home3QuarterScore, int home4QuarterScore, IEnumerable<OvertimeScoreData> homeOvertimeScores, int visitor1QuarterScore, int visitor2QuarterScore, int visitor3QuarterScore, int visitor4QuarterScore, IEnumerable<OvertimeScoreData> visitorOvertimeScores)
         {
             HomeTeam = homeTeam;
             VisitorTeam = visitorTeam;

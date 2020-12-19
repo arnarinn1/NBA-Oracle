@@ -6,42 +6,38 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
 {
     public class TeamBoxScoreData
     {
-        public TeamBoxScoreData(int currentNumberOfWins, int currentNumberOfLosses)
-        {
-            CurrentNumberOfWins = currentNumberOfWins;
-            CurrentNumberOfLosses = currentNumberOfLosses;
-        }
+        public TeamBoxScoreData() { }
 
-        public int CurrentNumberOfWins { get; }
-        public int CurrentNumberOfLosses { get; }
+        public int CurrentNumberOfWins { get; set; }
+        public int CurrentNumberOfLosses { get; set; }
 
-        public ICollection<PlayerBoxScoreData> Players { get; } = new List<PlayerBoxScoreData>();
-        public ICollection<string> DidNotPlay { get; } = new List<string>();
+        public ICollection<PlayerBoxScoreData> Players { get; set; } = new List<PlayerBoxScoreData>();
+        public ICollection<string> DidNotPlay { get; set; } = new List<string>();
 
-        public int TotalSecondsPlayed { get; private set; }
+        public int TotalSecondsPlayed { get; set; }
 
-        public int TotalFieldGoalsMade { get; private set; }
-        public int TotalFieldGoalsAttempted { get; private set; }
-        public double TotalFieldGoalPercentage { get; private set; }
+        public int TotalFieldGoalsMade { get; set; }
+        public int TotalFieldGoalsAttempted { get; set; }
+        public double TotalFieldGoalPercentage { get; set; }
 
-        public int TotalThreePointersMade { get; private set; }
-        public int TotalThreePointersAttempted { get; private set; }
-        public double TotalThreePointersPercentage { get; private set; }
+        public int TotalThreePointersMade { get; set; }
+        public int TotalThreePointersAttempted { get; set; }
+        public double TotalThreePointersPercentage { get; set; }
 
-        public int TotalFreeThrowsMade { get; private set; }
-        public int TotalFreeThrowsAttempted { get; private set; }
-        public double TotalFreeThrowsPercentage { get; private set; }
+        public int TotalFreeThrowsMade { get; set; }
+        public int TotalFreeThrowsAttempted { get; set; }
+        public double TotalFreeThrowsPercentage { get; set; }
 
-        public int TotalOffensiveRebounds { get; private set; }
-        public int TotalDefensiveRebounds { get; private set; }
-        public int TotalRebounds { get; private set; }
+        public int TotalOffensiveRebounds { get; set; }
+        public int TotalDefensiveRebounds { get; set; }
+        public int TotalRebounds { get; set; }
 
-        public int TotalAssists { get; private set; }
-        public int TotalSteals { get; private set; }
-        public int TotalBlocks { get; private set; }
-        public int TotalTurnovers { get; private set; }
-        public int TotalPersonalFouls { get; private set; }
-        public int TotalPoints { get; private set; }
+        public int TotalAssists { get; set; }
+        public int TotalSteals { get; set; }
+        public int TotalBlocks { get; set; }
+        public int TotalTurnovers { get; set; }
+        public int TotalPersonalFouls { get; set; }
+        public int TotalPoints { get; set; }
 
         public void AddPlayer(PlayerBoxScoreData player)
         {
@@ -52,16 +48,16 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
 
             TotalSecondsPlayed += player.SecondsPlayed;
 
-            TotalFieldGoalsMade =+ player.FieldGoalsMade;
-            TotalFieldGoalsAttempted =+ player.FieldGoalsAttempted;
+            TotalFieldGoalsMade += player.FieldGoalsMade;
+            TotalFieldGoalsAttempted += player.FieldGoalsAttempted;
             TotalFieldGoalPercentage = Divide(Players.Sum(x => x.FieldGoalsMade), Players.Sum(x => x.FieldGoalsAttempted));
 
-            TotalThreePointersMade =+ player.ThreePointersMade;
-            TotalThreePointersAttempted =+ player.ThreePointersAttempted;
+            TotalThreePointersMade += player.ThreePointersMade;
+            TotalThreePointersAttempted += player.ThreePointersAttempted;
             TotalThreePointersPercentage = Divide(Players.Sum(x => x.ThreePointersMade), Players.Sum(x => x.ThreePointersAttempted));
 
-            TotalFreeThrowsMade =+ player.FreeThrowsMade;
-            TotalFreeThrowsAttempted =+ player.FreeThrowsAttempted;
+            TotalFreeThrowsMade += player.FreeThrowsMade;
+            TotalFreeThrowsAttempted += player.FreeThrowsAttempted;
             TotalFreeThrowsPercentage = Divide(Players.Sum(x => x.FreeThrowsMade), Players.Sum(x => x.FreeThrowsAttempted));
 
             TotalOffensiveRebounds += player.OffensiveRebounds;

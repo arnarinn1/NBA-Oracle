@@ -2,7 +2,6 @@
 
 namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxScore.Data
 {
-
     public class PlayerBoxScoreData
     {
         public string PlayerName { get; }

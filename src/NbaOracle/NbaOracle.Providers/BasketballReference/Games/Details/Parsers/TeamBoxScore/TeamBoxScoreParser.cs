@@ -19,7 +19,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
 
             var players = element.QuerySelectorAll("tbody tr:not(.thead)");
 
-            var output = new TeamBoxScoreData(teamNameAndStandings.Wins, teamNameAndStandings.Losses);
+            var output = new TeamBoxScoreData { CurrentNumberOfWins = teamNameAndStandings.Wins , CurrentNumberOfLosses = teamNameAndStandings.Losses };
 
             var i = 0;
 
