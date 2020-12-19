@@ -9,5 +9,6 @@ namespace BuildingBlocks.FileSystem
         Task CreateFile(string filePath, FileContent content);
         Task OverwriteFile<T>(string filePath, T data);
         Task<FileContent> LoadFileContent(string filePath);
+        Task<T> LoadFileContent<T>(string filePath);
     }
 }

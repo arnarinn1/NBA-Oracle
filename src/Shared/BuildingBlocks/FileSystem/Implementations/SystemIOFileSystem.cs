@@ -42,5 +42,11 @@ namespace BuildingBlocks.FileSystem.Implementations
             var content = await System.IO.File.ReadAllTextAsync(filePath);
             return _serializer.Deserialize<FileContent>(content);
         }
+
+        public async Task<T> LoadFileContent<T>(string filePath)
+        {
+            var content = await System.IO.File.ReadAllTextAsync(filePath);
+            return _serializer.Deserialize<T>(content);
+        }
     }
 }

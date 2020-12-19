@@ -29,7 +29,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.TeamBoxS
                 var starter = i++ < 5;
 
                 var didNotPlay = player.GetTextContent("td[data-stat='reason']")?.ToLower(CultureInfo.InvariantCulture);
-                if (didNotPlay == "did not play")
+                if (didNotPlay == "did not play" || didNotPlay == "did not dress" || didNotPlay == "not with team")
                 {
                     output.AddDidNotPlay(playerName);
                     continue;

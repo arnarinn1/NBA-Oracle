@@ -26,7 +26,7 @@ namespace NbaOracle.Providers.BasketballReference.Games.Details.Parsers.LineScor
             VisitorTotalScore = TotalScore(visitor1QuarterScore, visitor2QuarterScore, visitor3QuarterScore, visitor4QuarterScore, visitorOvertimeScores);
 
             WinnerTeam = HomeTotalScore > VisitorTotalScore ? homeTeam : visitorTeam;
-            LosingTeam = HomeTotalScore > VisitorTotalScore ? homeTeam : visitorTeam;
+            LosingTeam = HomeTotalScore > VisitorTotalScore ? visitorTeam : homeTeam;
 
             static int TotalScore(int q1, int q2, int q3, int q4, IEnumerable<OvertimeScoreData> overtimes) => q1 + q2 + q3 + q4 + overtimes.Sum(x => x.Score);
         }

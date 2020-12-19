@@ -54,9 +54,9 @@ namespace NbaOracle.Tests.Integration
             _container.RegisterInstance<IBrowsingContext>(context);
 
             _container.Register<IDocumentLoader, AngleSharpHttpDocumentLoader>();
-            _container.RegisterDecorator<IDocumentLoader, ValidateDocumentHttpStatusBehavior>();
-            _container.RegisterDecorator<IDocumentLoader, WriteDocumentToFileSystemBehavior>();
-            _container.RegisterDecorator<IDocumentLoader, LoadDocumentFromFileSystemBehavior>();
+            _container.RegisterDecorator<IDocumentLoader, ValidateDocumentHttpStatusBehavior>(); 
+            //_container.RegisterDecorator<IDocumentLoader, WriteDocumentToFileSystemBehavior>();
+            //_container.RegisterDecorator<IDocumentLoader, LoadDocumentFromFileSystemBehavior>();
 
             _container.Register(typeof(IDocumentParser<>), typeof(IProvidersAssemblyMarker).Assembly);
             _container.Register(typeof(IDocumentParser<,>), typeof(IProvidersAssemblyMarker).Assembly);
