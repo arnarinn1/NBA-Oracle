@@ -13,8 +13,11 @@ namespace NbaOracle.Tests.Integration.Games
     public class RetrieveGameDetailsTests : IntegrationTestBase
     {
         [Theory]
-        [InlineData(2019)]
+        //[InlineData(2019)]
         //[InlineData(2018)]
+        //[InlineData(2017)]
+        //[InlineData(2016)]
+        [InlineData(2015)]
         public async Task Provider(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
