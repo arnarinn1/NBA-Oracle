@@ -16,10 +16,8 @@ namespace BuildingBlocks.StoredProcedureHandlers.Implementations
         }
 
         protected abstract string ProcedureName { get; }
-
-        protected abstract TResult CreateResult(TRequest request, DynamicParameters parameters);
-
         protected abstract void AddParameters(TRequest request, DynamicParameters parameters);
+        protected abstract TResult CreateResult(TRequest request, DynamicParameters parameters);
 
         public async Task<TResult> Execute(TRequest request)
         {

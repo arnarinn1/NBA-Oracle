@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using BuildingBlocks.StoredProcedureHandlers;
 
-namespace NbaOracle.Providers.StoredProcedureRequests.PersistPlayers
+namespace NbaOracle.Providers.StoredProcedureRequests.Players
 {
-    public class PersistPlayersRequest : IStoredProcedureRequest
+    public class MergePlayersRequest : IStoredProcedureRequest
     {
-        public PersistPlayersRequest(IEnumerable<PlayerRequestData> players)
+        public MergePlayersRequest(IEnumerable<PlayerRequestData> players)
         {
             Players = players;
         }

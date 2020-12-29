@@ -36,7 +36,7 @@ namespace NbaOracle.Tests.Integration.Teams
 
                     await processor.Process(team, season, teamData);
 
-                    await Task.Delay(TimeSpan.FromSeconds(3));
+                    //await Task.Delay(TimeSpan.FromSeconds(3));
                 }
             });
         }

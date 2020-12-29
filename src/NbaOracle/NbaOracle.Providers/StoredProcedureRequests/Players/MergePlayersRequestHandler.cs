@@ -3,17 +3,17 @@ using System.Data;
 using BuildingBlocks.StoredProcedureHandlers.Implementations;
 using Dapper;
 
-namespace NbaOracle.Providers.StoredProcedureRequests.PersistPlayers
+namespace NbaOracle.Providers.StoredProcedureRequests.Players
 {
-    public class PersistPlayersRequestHandler : DapperStoredProcedureHandler<PersistPlayersRequest, bool>
+    public class MergePlayersRequestHandler : DapperStoredProcedureHandler<MergePlayersRequest, bool>
     {
-        public PersistPlayersRequestHandler(IDbConnection dbConnection) : base(dbConnection) { }
+        public MergePlayersRequestHandler(IDbConnection dbConnection) : base(dbConnection) { }
 
         protected override string ProcedureName => "nba.sp_MergePlayers";
 
-        protected override bool CreateResult(PersistPlayersRequest request, DynamicParameters parameters) => true;
+        protected override bool CreateResult(MergePlayersRequest request, DynamicParameters parameters) => true;
 
-        protected override void AddParameters(PersistPlayersRequest request, DynamicParameters parameters)
+        protected override void AddParameters(MergePlayersRequest request, DynamicParameters parameters)
         {
             var dt = new DataTable();
             dt.Columns.Add("Identifier", typeof(string));

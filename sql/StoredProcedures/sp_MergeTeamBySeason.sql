@@ -1,4 +1,4 @@
-CREATE OR ALTER Procedure nba.MergeTeamBySeason
+CREATE OR ALTER Procedure nba.sp_MergeTeamBySeason
 ( @Teams nba.tt_MergeTeamBySeasonDataType readonly
 )
 AS 

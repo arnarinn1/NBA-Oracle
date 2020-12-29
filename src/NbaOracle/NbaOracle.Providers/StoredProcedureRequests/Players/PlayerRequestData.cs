@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NbaOracle.Providers.StoredProcedureRequests.PersistPlayers
+namespace NbaOracle.Providers.StoredProcedureRequests.Players
 {
     public class PlayerRequestData
     {
