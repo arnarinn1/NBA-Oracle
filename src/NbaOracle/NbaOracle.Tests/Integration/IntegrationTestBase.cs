@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Threading.Tasks;
 using AngleSharp;
@@ -9,6 +10,8 @@ using BuildingBlocks.FileSystem.Implementations;
 using BuildingBlocks.Parsers;
 using BuildingBlocks.Serialization;
 using BuildingBlocks.Serialization.Implementation;
+using BuildingBlocks.StoredProcedureHandlers;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using NbaOracle.Providers;
 using NbaOracle.Providers.BasketballReference.Games.Details;
@@ -48,6 +51,10 @@ namespace NbaOracle.Tests.Integration
             _container.RegisterSingleton<ISerializer, NativeJsonSerializer>();
             _container.RegisterSingleton<IFileSystem, SystemIOFileSystem>();
 
+            _container.Register<IDbConnection>(() => new SqlConnection("Server=localhost;Database=NbaOracle;Trusted_Connection=True;MultipleActiveResultSets=true"), Lifestyle.Scoped);
+            
+            _container.Register(typeof(IStoredProcedureHandler<,>), typeof(IProvidersAssemblyMarker).Assembly);
+
             var config = Configuration.Default.WithDefaultLoader();
             var context = BrowsingContext.New(config);
 
@@ -65,7 +72,8 @@ namespace NbaOracle.Tests.Integration
             _container.Register<ITeamProvider, TeamProvider>();
             _container.RegisterDecorator<ITeamProvider, LoadTeamDataFromFileSystemBehavior>();
 
-            _container.Register<ITeamProcessor, WriteTeamDataToFileSystemProcessor>();
+            //_container.Register<ITeamProcessor, WriteTeamDataToFileSystemProcessor>();
+            _container.Register<ITeamProcessor, PersistTeamDataToDatabaseProcessor>();
 
             _container.RegisterInstance(new MonthlyGameResultsProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<IMonthlyGameResultsProvider, MonthlyGameResultsProvider>();

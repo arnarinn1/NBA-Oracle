@@ -34,5 +34,13 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data
         public string College { get; }
 
         public override string ToString() => $"{Name} ({Position}-{JerseyNumber})";
+
+        public string GetPlayerIdentifier()
+        {
+            var nameInLowerCase = Name.ToLowerInvariant();
+            var nameSplit = nameInLowerCase.Split(" ");
+            var nameSplitFormat = string.Join(",", nameSplit);
+            return $"{nameSplitFormat}_{BirthDate.Year}-{BirthDate.Month}-{BirthDate.Day}";
+        }
     }
 }

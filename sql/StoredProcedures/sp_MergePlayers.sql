@@ -1,4 +1,4 @@
-CREATE OR ALTER Procedure nba.MergePlayers
+CREATE OR ALTER Procedure nba.sp_MergePlayers
 ( @Players nba.tt_MergePlayerDataType readonly
 )
 AS 

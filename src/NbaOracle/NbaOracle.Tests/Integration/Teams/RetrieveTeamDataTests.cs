@@ -34,7 +34,7 @@ namespace NbaOracle.Tests.Integration.Teams
                 {
                     var teamData = await provider.GetTeamData(team, season);
 
-                    //await processor.Process(team, season, teamData);
+                    await processor.Process(team, season, teamData);
 
                     await Task.Delay(TimeSpan.FromSeconds(3));
                 }
