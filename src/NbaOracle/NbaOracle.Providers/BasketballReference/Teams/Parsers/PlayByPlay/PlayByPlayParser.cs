@@ -24,7 +24,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.PlayByPlay
                 var plusMinusOnCourt = player.GetTextContent("td[data-stat='plus_minus_on']");
                 var plusMinusNetOnCourt = player.GetTextContent("td[data-stat='plus_minus_net']");
 
-                output.Add(new PlayByPlayData(playerName, games, minutesPlayed,plusMinusOnCourt, plusMinusNetOnCourt));
+                output.Add(PlayByPlayData.Create(playerName, games, minutesPlayed,plusMinusOnCourt, plusMinusNetOnCourt));
             }
 
             return output;

@@ -8,9 +8,9 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Processors
     public class WriteTeamDataToFileSystemProcessor : ITeamProcessor
     {
         private readonly IFileSystem _fileSystem;
-        private readonly TeamProcessorFileSystemSettings _settings;
+        private readonly TeamConfigSettings _settings;
 
-        public WriteTeamDataToFileSystemProcessor(IFileSystem fileSystem, TeamProcessorFileSystemSettings settings)
+        public WriteTeamDataToFileSystemProcessor(IFileSystem fileSystem, TeamConfigSettings settings)
         {
             _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));

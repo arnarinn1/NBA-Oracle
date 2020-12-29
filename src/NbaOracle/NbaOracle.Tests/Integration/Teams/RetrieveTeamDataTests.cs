@@ -12,15 +12,15 @@ namespace NbaOracle.Tests.Integration.Teams
     {
         [Theory]
         [InlineData(2019)]
-        [InlineData(2018)]
-        [InlineData(2017)]
-        [InlineData(2016)]
-        [InlineData(2015)]
-        [InlineData(2014)]
-        [InlineData(2013)]
-        [InlineData(2012)]
-        [InlineData(2011)]
-        [InlineData(2010)]
+        //[InlineData(2018)]
+        //[InlineData(2017)]
+        //[InlineData(2016)]
+        //[InlineData(2015)]
+        //[InlineData(2014)]
+        //[InlineData(2013)]
+        //[InlineData(2012)]
+        //[InlineData(2011)]
+        //[InlineData(2010)]
         public async Task ProcessData(int seasonStartYear)
         {
             var season = new Season(seasonStartYear);
@@ -34,7 +34,7 @@ namespace NbaOracle.Tests.Integration.Teams
                 {
                     var teamData = await provider.GetTeamData(team, season);
 
-                    await processor.Process(team, season, teamData);
+                    //await processor.Process(team, season, teamData);
 
                     await Task.Delay(TimeSpan.FromSeconds(3));
                 }

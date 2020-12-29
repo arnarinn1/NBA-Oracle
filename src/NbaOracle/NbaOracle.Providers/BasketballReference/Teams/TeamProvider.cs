@@ -14,17 +14,17 @@ namespace NbaOracle.Providers.BasketballReference.Teams
     public class TeamProvider : ITeamProvider
     {
         private readonly IDocumentLoader _documentLoader;
-        private readonly TeamProviderSettings _providerSettings;
+        private readonly TeamConfigSettings _settings;
 
         private readonly IDocumentParser<IEnumerable<PlayerRoosterData>> _teamRoosterParser;
         private readonly IDocumentParser<IEnumerable<PlayerSeasonStatisticsData>> _playerSeasonStatisticsParser;
         private readonly IDocumentParser<IEnumerable<PlayByPlayData>> _playByPlayParser;
         private readonly IDocumentParser<TeamMiscData> _teamMiscParser;
 
-        public TeamProvider(IDocumentLoader documentLoader, TeamProviderSettings providerSettings, IDocumentParser<IEnumerable<PlayerRoosterData>> teamRoosterParser, IDocumentParser<IEnumerable<PlayerSeasonStatisticsData>> playerSeasonStatisticsParser, IDocumentParser<IEnumerable<PlayByPlayData>> playByPlayParser, IDocumentParser<TeamMiscData> teamMiscParser)
+        public TeamProvider(IDocumentLoader documentLoader, TeamConfigSettings settings, IDocumentParser<IEnumerable<PlayerRoosterData>> teamRoosterParser, IDocumentParser<IEnumerable<PlayerSeasonStatisticsData>> playerSeasonStatisticsParser, IDocumentParser<IEnumerable<PlayByPlayData>> playByPlayParser, IDocumentParser<TeamMiscData> teamMiscParser)
         {
             _documentLoader = documentLoader ?? throw new ArgumentNullException(nameof(documentLoader));
-            _providerSettings = providerSettings ?? throw new ArgumentNullException(nameof(providerSettings));
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
 
             _teamRoosterParser = teamRoosterParser ?? throw new ArgumentNullException(nameof(teamRoosterParser));
             _playerSeasonStatisticsParser = playerSeasonStatisticsParser ?? throw new ArgumentNullException(nameof(playerSeasonStatisticsParser));
@@ -34,7 +34,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams
 
         public async Task<TeamData> GetTeamData(Team team, Season season)
         {
-            var document = await _documentLoader.LoadDocument(_providerSettings.ToDocumentOptions(team, season));
+            var document = await _documentLoader.LoadDocument(_settings.ToDocumentOptions(team, season));
 
             var rooster = _teamRoosterParser.Parse(document);
             var playerSeasonStatistics = _playerSeasonStatisticsParser.Parse(document);

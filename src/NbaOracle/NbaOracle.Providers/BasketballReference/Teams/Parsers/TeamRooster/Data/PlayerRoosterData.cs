@@ -5,17 +5,22 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data
 {
     public class PlayerRoosterData
     {
-        public PlayerRoosterData(string name, string jerseyNumber, string position, DateTime birthDate, string birthCountry, string height, string weight, string yearsExperience, string college)
+        public static PlayerRoosterData Create(string name, string jerseyNumber, string position, DateTime birthDate, string birthCountry, string height, string weight, string yearsExperience, string college)
+        {
+            return new PlayerRoosterData(name, jerseyNumber, position, birthDate, birthCountry, new HeightInFeetAndInches(height).ToCm(), new WeightInPounds(weight).ToKiloGrams(), new NumberOfYearInLeague(yearsExperience), new College(college));
+        }
+
+        public PlayerRoosterData(string name, string jerseyNumber, string position, DateTime birthDate, string birthCountry, double height, double weight, int numberOfYearInLeague, string college)
         {
             Name = name;
             JerseyNumber = jerseyNumber;
             Position = position;
             BirthDate = birthDate;
             BirthCountry = birthCountry;
-            Height = new HeightInFeetAndInches(height).ToCm();
-            Weight = new WeightInPounds(weight).ToKiloGrams();
-            NumberOfYearInLeague = new NumberOfYearInLeague(yearsExperience);
-            College = new College(college);
+            Height = height;
+            Weight = weight;
+            NumberOfYearInLeague = numberOfYearInLeague;
+            College = college;
         }
 
         public string Name { get; }

@@ -61,10 +61,10 @@ namespace NbaOracle.Tests.Integration
             _container.Register(typeof(IDocumentParser<>), typeof(IProvidersAssemblyMarker).Assembly);
             _container.Register(typeof(IDocumentParser<,>), typeof(IProvidersAssemblyMarker).Assembly);
 
-            _container.RegisterInstance(new TeamProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));
+            _container.RegisterInstance(new TeamConfigSettings(basketballReferenceBaseUrl, baseDirectoryPath));
             _container.Register<ITeamProvider, TeamProvider>();
+            _container.RegisterDecorator<ITeamProvider, LoadTeamDataFromFileSystemBehavior>();
 
-            _container.RegisterInstance(new TeamProcessorFileSystemSettings(baseDirectoryPath));
             _container.Register<ITeamProcessor, WriteTeamDataToFileSystemProcessor>();
 
             _container.RegisterInstance(new MonthlyGameResultsProviderSettings(basketballReferenceBaseUrl, baseDirectoryPath));

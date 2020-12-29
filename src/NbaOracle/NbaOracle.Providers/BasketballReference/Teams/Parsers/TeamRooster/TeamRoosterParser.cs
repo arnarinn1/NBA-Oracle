@@ -24,7 +24,7 @@ namespace NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster
                 var yearsExperience = player.GetTextContent("td[data-stat='years_experience']");
                 var college = player.GetTextContent("td[data-stat='college']");
 
-                output.Add(new PlayerRoosterData(playerName, playerNumber, position, birthDate, birthCountry, height, weight, yearsExperience, college));
+                output.Add(PlayerRoosterData.Create(playerName, playerNumber, position, birthDate, birthCountry, height, weight, yearsExperience, college));
             }
 
             return output;
