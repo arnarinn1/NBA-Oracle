@@ -1,10 +1,10 @@
 CREATE TABLE nba.Player
-( Id               INT IDENTITY(1,1) NOT NULL
-, Identifier       VARCHAR(128)      NOT NULL
-, Name             VARCHAR(128)      NOT NULL
-, BirthDate        DATE              NOT NULL
-, BirthCountry     CHAR(2)           NOT NULL
-, College          VARCHAR(128)      NOT NULL
+( Id               INT IDENTITY(1,1)  NOT NULL
+, Identifier       NVARCHAR(128)      NOT NULL
+, Name             NVARCHAR(128)      NOT NULL
+, BirthDate        DATE               NOT NULL
+, BirthCountry     CHAR(2)            NOT NULL
+, College          NVARCHAR(128)      NOT NULL
 )
 
 ALTER TABLE nba.Player
