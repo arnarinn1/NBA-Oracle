@@ -11,5 +11,5 @@ ALTER TABLE nba.Player
 ADD CONSTRAINT PK_Player PRIMARY KEY CLUSTERED(Id)
 GO
 
-CREATE NONCLUSTERED INDEX Idx_NonClu_Player_Identifier ON nba.Player (Identifier)
+CREATE UNIQUE NONCLUSTERED INDEX Idx_NonClu_Player_Identifier ON nba.Player (Identifier)
 GO
