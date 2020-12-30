@@ -63,5 +63,13 @@ BEGIN
    , source.LossesLeagueRank
    , source.MarginOfVictoryLeagueRank
    );
+
+   SELECT tbs.Id         TeamBySeasonId
+        , tbs.SeasonId   SeasonId
+        , tbs.TeamId     TeamId
+     FROM nba.TeamBySeason tbs
+     JOIN @Teams t
+       ON t.SeasonId = tbs.SeasonId 
+      AND t.TeamId   = tbs.TeamId
 END
 GO

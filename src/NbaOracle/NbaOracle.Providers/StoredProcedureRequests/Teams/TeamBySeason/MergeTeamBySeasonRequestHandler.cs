@@ -4,7 +4,7 @@ using Dapper;
 
 namespace NbaOracle.Providers.StoredProcedureRequests.Teams.TeamBySeason
 {
-    public class MergeTeamBySeasonRequestHandler : DapperStoredProcedureHandler<MergeTeamBySeasonRequest, bool>
+    public class MergeTeamBySeasonRequestHandler : DapperStoredProcedureHandlerWithSingleQueryResult<MergeTeamBySeasonRequest, MergeTeamBySeasonResult>
     {
         public MergeTeamBySeasonRequestHandler(IDbConnection dbConnection) : base(dbConnection) { }
 
@@ -28,7 +28,5 @@ namespace NbaOracle.Providers.StoredProcedureRequests.Teams.TeamBySeason
 
             parameters.Add("@Teams", dt.AsTableValuedParameter("nba.tt_MergeTeamBySeasonDataType"));
         }
-
-        protected override bool CreateResult(MergeTeamBySeasonRequest request, DynamicParameters parameters) => true;
     }
 }
