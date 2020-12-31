@@ -3,6 +3,7 @@ using System.Linq;
 using NbaOracle.Providers.BasketballReference.Teams;
 using NbaOracle.Providers.BasketballReference.Teams.Parsers.TeamRooster.Data;
 using NbaOracle.Providers.StoredProcedureRequests.Players;
+using NbaOracle.Providers.StoredProcedureRequests.Teams.PlayerSeasonStatistics;
 using NbaOracle.Providers.StoredProcedureRequests.Teams.TeamBySeason;
 using NbaOracle.Providers.StoredProcedureRequests.Teams.TeamRoosterBySeason;
 using ValueObjects;
@@ -21,6 +22,11 @@ namespace NbaOracle.Providers.StoredProcedureRequests.Teams
         {
             var playersOnRooster = rooster.Select(x => new PlayerOnRoosterRequestData(teamBySeasonId, players.Single(p => p.PlayerIdentifier == x.GetPlayerIdentifier()).PlayerId, x.JerseyNumber, x.Position, x.Height, x.Weight, x.NumberOfYearInLeague));
             return new MergeTeamRoosterBySeasonRequest(playersOnRooster);
+        }
+
+        public static MergePlayerSeasonStatisticsRequest CreateMergePlayerSeasonStatisticsRequest()
+        {
+            return new MergePlayerSeasonStatisticsRequest(null);
         }
     }
 }
